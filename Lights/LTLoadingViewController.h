@@ -1,5 +1,5 @@
 //
-//  LTFirstViewController.h
+//  LTLoadingViewController.h
 //  Lights
 //
 //  Created by Evan Coleman on 11/26/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LTFirstViewController : UIViewController
+@interface LTLoadingViewController : UIViewController
 
 @end

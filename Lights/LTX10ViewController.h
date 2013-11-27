@@ -1,5 +1,5 @@
 //
-//  LTSecondViewController.h
+//  LTX10ViewController.h
 //  Lights
 //
 //  Created by Evan Coleman on 11/26/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LTSecondViewController : UIViewController
+@interface LTX10ViewController : UIViewController
 
 @end
