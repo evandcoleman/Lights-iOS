@@ -10,6 +10,7 @@
 #import "LTLoadingViewController.h"
 #import "LTX10ViewController.h"
 #import "LTSettingsViewController.h"
+#import "LTColorViewController.h"
 
 @interface LTAppDelegate ()
 
@@ -24,10 +25,13 @@
     
     self.tabBarController = [[UITabBarController alloc] init];
     UINavigationController *x10ViewController = [[UINavigationController alloc] initWithRootViewController:[[LTX10ViewController alloc] init]];
+    UINavigationController *colorViewController = [[UINavigationController alloc] initWithRootViewController:[[LTColorViewController alloc] init]];
+    colorViewController.title = @"Colors";
+    colorViewController.tabBarItem.image = [UIImage imageNamed:@"flower"];
     UINavigationController *settingsViewController = [[UINavigationController alloc] initWithRootViewController:[[LTSettingsViewController alloc] init]];
     settingsViewController.title = @"Settings";
     settingsViewController.tabBarItem.image = [UIImage imageNamed:@"gear"];
-    self.tabBarController.viewControllers = @[x10ViewController, settingsViewController];
+    self.tabBarController.viewControllers = @[x10ViewController, colorViewController, settingsViewController];
     
     self.window.rootViewController = self.tabBarController;
     
@@ -40,8 +44,8 @@
     
     NSString *serverString = [[NSUserDefaults standardUserDefaults] objectForKey:@"LTServerKey"];
     if (!serverString) {
-        serverString = @"ws://evancoleman.net:9000";
-        [[NSUserDefaults standardUserDefaults] setObject:@"ws://evancoleman.net:9000" forKey:@"LTServerKey"];
+        serverString = @"ws://home.evancoleman.net:9000";
+        [[NSUserDefaults standardUserDefaults] setObject:serverString forKey:@"LTServerKey"];
     }
     
     self.session = [[LKSession alloc] initWithServer:[NSURL URLWithString:serverString]];

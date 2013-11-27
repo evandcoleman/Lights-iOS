@@ -39,6 +39,22 @@
 		2024357F1845961100DD8EC1 /* turtle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2024356F1845961100DD8EC1 /* turtle@2x.png */; };
 		202435821845A4AD00DD8EC1 /* LTTableDrawerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 202435811845A4AD00DD8EC1 /* LTTableDrawerView.m */; };
 		20B4096A184664BE00F0016A /* LTSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B40969184664BE00F0016A /* LTSettingsViewController.m */; };
+		20B4096D18466A1500F0016A /* LTColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B4096C18466A1500F0016A /* LTColorViewController.m */; };
+		20B4098718466AA500F0016A /* checkerboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B4096F18466AA500F0016A /* checkerboard.png */; };
+		20B4098818466AA500F0016A /* checkerboard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B4097018466AA500F0016A /* checkerboard@2x.png */; };
+		20B4098918466AA500F0016A /* colorPickerKnob.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B4097118466AA500F0016A /* colorPickerKnob.png */; };
+		20B4098A18466AA500F0016A /* colorPickerKnob@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B4097218466AA500F0016A /* colorPickerKnob@2x.png */; };
+		20B4098B18466AA500F0016A /* HSV.c in Sources */ = {isa = PBXBuildFile; fileRef = 20B4097318466AA500F0016A /* HSV.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		20B4098C18466AA500F0016A /* KZColorCompareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B4097618466AA500F0016A /* KZColorCompareView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		20B4098D18466AA500F0016A /* KZColorPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B4097818466AA500F0016A /* KZColorPicker.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		20B4098E18466AA500F0016A /* KZColorPickerAlphaSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B4097A18466AA500F0016A /* KZColorPickerAlphaSlider.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		20B4098F18466AA500F0016A /* KZColorPickerBrightnessSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B4097C18466AA500F0016A /* KZColorPickerBrightnessSlider.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		20B4099018466AA500F0016A /* KZColorPickerHSWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B4097E18466AA500F0016A /* KZColorPickerHSWheel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		20B4099118466AA500F0016A /* KZColorPickerSwatchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B4098018466AA500F0016A /* KZColorPickerSwatchView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		20B4099218466AA500F0016A /* KZUnitSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B4098218466AA500F0016A /* KZUnitSlider.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		20B4099318466AA500F0016A /* pickerColorWheel.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B4098318466AA500F0016A /* pickerColorWheel.png */; };
+		20B4099418466AA500F0016A /* pickerColorWheel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B4098418466AA500F0016A /* pickerColorWheel@2x.png */; };
+		20B4099518466AA500F0016A /* UIColor-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B4098618466AA500F0016A /* UIColor-Expanded.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		41A7A9EBE8784F9194B187BE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D0E8E36EC0F4B32AA11387D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +109,32 @@
 		202435811845A4AD00DD8EC1 /* LTTableDrawerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTableDrawerView.m; sourceTree = "<group>"; };
 		20B40968184664BE00F0016A /* LTSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTSettingsViewController.h; sourceTree = "<group>"; };
 		20B40969184664BE00F0016A /* LTSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTSettingsViewController.m; sourceTree = "<group>"; };
+		20B4096B18466A1500F0016A /* LTColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTColorViewController.h; sourceTree = "<group>"; };
+		20B4096C18466A1500F0016A /* LTColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTColorViewController.m; sourceTree = "<group>"; };
+		20B4096F18466AA500F0016A /* checkerboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkerboard.png; sourceTree = "<group>"; };
+		20B4097018466AA500F0016A /* checkerboard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkerboard@2x.png"; sourceTree = "<group>"; };
+		20B4097118466AA500F0016A /* colorPickerKnob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colorPickerKnob.png; sourceTree = "<group>"; };
+		20B4097218466AA500F0016A /* colorPickerKnob@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "colorPickerKnob@2x.png"; sourceTree = "<group>"; };
+		20B4097318466AA500F0016A /* HSV.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HSV.c; sourceTree = "<group>"; };
+		20B4097418466AA500F0016A /* HSV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSV.h; sourceTree = "<group>"; };
+		20B4097518466AA500F0016A /* KZColorCompareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZColorCompareView.h; sourceTree = "<group>"; };
+		20B4097618466AA500F0016A /* KZColorCompareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZColorCompareView.m; sourceTree = "<group>"; };
+		20B4097718466AA500F0016A /* KZColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZColorPicker.h; sourceTree = "<group>"; };
+		20B4097818466AA500F0016A /* KZColorPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZColorPicker.m; sourceTree = "<group>"; };
+		20B4097918466AA500F0016A /* KZColorPickerAlphaSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZColorPickerAlphaSlider.h; sourceTree = "<group>"; };
+		20B4097A18466AA500F0016A /* KZColorPickerAlphaSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZColorPickerAlphaSlider.m; sourceTree = "<group>"; };
+		20B4097B18466AA500F0016A /* KZColorPickerBrightnessSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZColorPickerBrightnessSlider.h; sourceTree = "<group>"; };
+		20B4097C18466AA500F0016A /* KZColorPickerBrightnessSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZColorPickerBrightnessSlider.m; sourceTree = "<group>"; };
+		20B4097D18466AA500F0016A /* KZColorPickerHSWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZColorPickerHSWheel.h; sourceTree = "<group>"; };
+		20B4097E18466AA500F0016A /* KZColorPickerHSWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZColorPickerHSWheel.m; sourceTree = "<group>"; };
+		20B4097F18466AA500F0016A /* KZColorPickerSwatchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZColorPickerSwatchView.h; sourceTree = "<group>"; };
+		20B4098018466AA500F0016A /* KZColorPickerSwatchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZColorPickerSwatchView.m; sourceTree = "<group>"; };
+		20B4098118466AA500F0016A /* KZUnitSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZUnitSlider.h; sourceTree = "<group>"; };
+		20B4098218466AA500F0016A /* KZUnitSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZUnitSlider.m; sourceTree = "<group>"; };
+		20B4098318466AA500F0016A /* pickerColorWheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pickerColorWheel.png; sourceTree = "<group>"; };
+		20B4098418466AA500F0016A /* pickerColorWheel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pickerColorWheel@2x.png"; sourceTree = "<group>"; };
+		20B4098518466AA500F0016A /* UIColor-Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor-Expanded.h"; sourceTree = "<group>"; };
+		20B4098618466AA500F0016A /* UIColor-Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor-Expanded.m"; sourceTree = "<group>"; };
 		8D0E8E36EC0F4B32AA11387D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3029ED772BD495CA292EDF3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,12 +199,15 @@
 		202435241845926A00DD8EC1 /* Lights */ = {
 			isa = PBXGroup;
 			children = (
+				20B4096E18466AA500F0016A /* ColorPicker */,
 				2024352D1845926A00DD8EC1 /* LTAppDelegate.h */,
 				2024352E1845926A00DD8EC1 /* LTAppDelegate.m */,
 				2024355C1845952D00DD8EC1 /* LTLoadingViewController.h */,
 				2024355D1845952D00DD8EC1 /* LTLoadingViewController.m */,
 				202435591845937A00DD8EC1 /* LTX10ViewController.h */,
 				2024355A1845937A00DD8EC1 /* LTX10ViewController.m */,
+				20B4096B18466A1500F0016A /* LTColorViewController.h */,
+				20B4096C18466A1500F0016A /* LTColorViewController.m */,
 				20B40968184664BE00F0016A /* LTSettingsViewController.h */,
 				20B40969184664BE00F0016A /* LTSettingsViewController.m */,
 				202435801845A4AD00DD8EC1 /* LTTableDrawerView.h */,
@@ -224,6 +269,37 @@
 				2024356F1845961100DD8EC1 /* turtle@2x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		20B4096E18466AA500F0016A /* ColorPicker */ = {
+			isa = PBXGroup;
+			children = (
+				20B4096F18466AA500F0016A /* checkerboard.png */,
+				20B4097018466AA500F0016A /* checkerboard@2x.png */,
+				20B4097118466AA500F0016A /* colorPickerKnob.png */,
+				20B4097218466AA500F0016A /* colorPickerKnob@2x.png */,
+				20B4097318466AA500F0016A /* HSV.c */,
+				20B4097418466AA500F0016A /* HSV.h */,
+				20B4097518466AA500F0016A /* KZColorCompareView.h */,
+				20B4097618466AA500F0016A /* KZColorCompareView.m */,
+				20B4097718466AA500F0016A /* KZColorPicker.h */,
+				20B4097818466AA500F0016A /* KZColorPicker.m */,
+				20B4097918466AA500F0016A /* KZColorPickerAlphaSlider.h */,
+				20B4097A18466AA500F0016A /* KZColorPickerAlphaSlider.m */,
+				20B4097B18466AA500F0016A /* KZColorPickerBrightnessSlider.h */,
+				20B4097C18466AA500F0016A /* KZColorPickerBrightnessSlider.m */,
+				20B4097D18466AA500F0016A /* KZColorPickerHSWheel.h */,
+				20B4097E18466AA500F0016A /* KZColorPickerHSWheel.m */,
+				20B4097F18466AA500F0016A /* KZColorPickerSwatchView.h */,
+				20B4098018466AA500F0016A /* KZColorPickerSwatchView.m */,
+				20B4098118466AA500F0016A /* KZUnitSlider.h */,
+				20B4098218466AA500F0016A /* KZUnitSlider.m */,
+				20B4098318466AA500F0016A /* pickerColorWheel.png */,
+				20B4098418466AA500F0016A /* pickerColorWheel@2x.png */,
+				20B4098518466AA500F0016A /* UIColor-Expanded.h */,
+				20B4098618466AA500F0016A /* UIColor-Expanded.m */,
+			);
+			path = ColorPicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,9 +385,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2024353D1845926A00DD8EC1 /* Images.xcassets in Resources */,
+				20B4098718466AA500F0016A /* checkerboard.png in Resources */,
 				2024357C1845961100DD8EC1 /* schedule.png in Resources */,
 				202435761845961100DD8EC1 /* house.png in Resources */,
 				2024357A1845961100DD8EC1 /* rabbit.png in Resources */,
+				20B4099318466AA500F0016A /* pickerColorWheel.png in Resources */,
+				20B4099418466AA500F0016A /* pickerColorWheel@2x.png in Resources */,
+				20B4098818466AA500F0016A /* checkerboard@2x.png in Resources */,
 				2024357F1845961100DD8EC1 /* turtle@2x.png in Resources */,
 				202435741845961100DD8EC1 /* gear.png in Resources */,
 				202435291845926A00DD8EC1 /* InfoPlist.strings in Resources */,
@@ -320,11 +400,13 @@
 				202435721845961100DD8EC1 /* flower.png in Resources */,
 				2024357D1845961100DD8EC1 /* schedule@2x.png in Resources */,
 				202435701845961100DD8EC1 /* dark.png in Resources */,
+				20B4098918466AA500F0016A /* colorPickerKnob.png in Resources */,
 				202435791845961100DD8EC1 /* now@2x.png in Resources */,
 				202435771845961100DD8EC1 /* house@2x.png in Resources */,
 				2024357E1845961100DD8EC1 /* turtle.png in Resources */,
 				202435731845961100DD8EC1 /* flower@2x.png in Resources */,
 				202435781845961100DD8EC1 /* now.png in Resources */,
+				20B4098A18466AA500F0016A /* colorPickerKnob@2x.png in Resources */,
 				202435751845961100DD8EC1 /* gear@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,12 +459,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20B4099518466AA500F0016A /* UIColor-Expanded.m in Sources */,
+				20B4099218466AA500F0016A /* KZUnitSlider.m in Sources */,
 				2024352F1845926A00DD8EC1 /* LTAppDelegate.m in Sources */,
+				20B4099118466AA500F0016A /* KZColorPickerSwatchView.m in Sources */,
+				20B4096D18466A1500F0016A /* LTColorViewController.m in Sources */,
 				202435821845A4AD00DD8EC1 /* LTTableDrawerView.m in Sources */,
+				20B4098E18466AA500F0016A /* KZColorPickerAlphaSlider.m in Sources */,
+				20B4098F18466AA500F0016A /* KZColorPickerBrightnessSlider.m in Sources */,
 				2024355E1845952D00DD8EC1 /* LTLoadingViewController.m in Sources */,
+				20B4099018466AA500F0016A /* KZColorPickerHSWheel.m in Sources */,
+				20B4098D18466AA500F0016A /* KZColorPicker.m in Sources */,
 				20B4096A184664BE00F0016A /* LTSettingsViewController.m in Sources */,
 				2024355B1845937A00DD8EC1 /* LTX10ViewController.m in Sources */,
+				20B4098C18466AA500F0016A /* KZColorCompareView.m in Sources */,
 				2024352B1845926A00DD8EC1 /* main.m in Sources */,
+				20B4098B18466AA500F0016A /* HSV.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

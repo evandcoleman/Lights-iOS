@@ -42,7 +42,7 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.frame = CGRectMake(0, 100, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 40);
+    self.tableView.frame = CGRectMake(0, 100, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 150);
     
     [onButton setTitle:@"All On" forState:UIControlStateNormal];
     [offButton setTitle:@"All Off" forState:UIControlStateNormal];
