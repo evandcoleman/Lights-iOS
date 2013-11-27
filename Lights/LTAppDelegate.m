@@ -9,6 +9,7 @@
 #import "LTAppDelegate.h"
 #import "LTLoadingViewController.h"
 #import "LTX10ViewController.h"
+#import "LTSettingsViewController.h"
 
 @interface LTAppDelegate ()
 
@@ -23,7 +24,10 @@
     
     self.tabBarController = [[UITabBarController alloc] init];
     UINavigationController *x10ViewController = [[UINavigationController alloc] initWithRootViewController:[[LTX10ViewController alloc] init]];
-    self.tabBarController.viewControllers = @[x10ViewController];
+    UINavigationController *settingsViewController = [[UINavigationController alloc] initWithRootViewController:[[LTSettingsViewController alloc] init]];
+    settingsViewController.title = @"Settings";
+    settingsViewController.tabBarItem.image = [UIImage imageNamed:@"gear"];
+    self.tabBarController.viewControllers = @[x10ViewController, settingsViewController];
     
     self.window.rootViewController = self.tabBarController;
     
@@ -34,7 +38,13 @@
     
     [self.tabBarController presentViewController:self.loadingViewController animated:NO completion:NULL];
     
-    self.session = [[LKSession alloc] initWithServer:[NSURL URLWithString:@"ws://evancoleman.net:9000"]];
+    NSString *serverString = [[NSUserDefaults standardUserDefaults] objectForKey:@"LTServerKey"];
+    if (!serverString) {
+        serverString = @"ws://evancoleman.net:9000";
+        [[NSUserDefaults standardUserDefaults] setObject:@"ws://evancoleman.net:9000" forKey:@"LTServerKey"];
+    }
+    
+    self.session = [[LKSession alloc] initWithServer:[NSURL URLWithString:serverString]];
     [self.session openSessionWithCompletion:^{
         [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
     }];

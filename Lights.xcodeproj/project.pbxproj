@@ -38,6 +38,7 @@
 		2024357E1845961100DD8EC1 /* turtle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2024356E1845961100DD8EC1 /* turtle.png */; };
 		2024357F1845961100DD8EC1 /* turtle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2024356F1845961100DD8EC1 /* turtle@2x.png */; };
 		202435821845A4AD00DD8EC1 /* LTTableDrawerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 202435811845A4AD00DD8EC1 /* LTTableDrawerView.m */; };
+		20B4096A184664BE00F0016A /* LTSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B40969184664BE00F0016A /* LTSettingsViewController.m */; };
 		41A7A9EBE8784F9194B187BE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D0E8E36EC0F4B32AA11387D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,8 @@
 		2024356F1845961100DD8EC1 /* turtle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "turtle@2x.png"; sourceTree = "<group>"; };
 		202435801845A4AD00DD8EC1 /* LTTableDrawerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTableDrawerView.h; sourceTree = "<group>"; };
 		202435811845A4AD00DD8EC1 /* LTTableDrawerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTableDrawerView.m; sourceTree = "<group>"; };
+		20B40968184664BE00F0016A /* LTSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTSettingsViewController.h; sourceTree = "<group>"; };
+		20B40969184664BE00F0016A /* LTSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTSettingsViewController.m; sourceTree = "<group>"; };
 		8D0E8E36EC0F4B32AA11387D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3029ED772BD495CA292EDF3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,6 +163,8 @@
 				2024355D1845952D00DD8EC1 /* LTLoadingViewController.m */,
 				202435591845937A00DD8EC1 /* LTX10ViewController.h */,
 				2024355A1845937A00DD8EC1 /* LTX10ViewController.m */,
+				20B40968184664BE00F0016A /* LTSettingsViewController.h */,
+				20B40969184664BE00F0016A /* LTSettingsViewController.m */,
 				202435801845A4AD00DD8EC1 /* LTTableDrawerView.h */,
 				202435811845A4AD00DD8EC1 /* LTTableDrawerView.m */,
 				2024355F184595E700DD8EC1 /* Images */,
@@ -375,6 +380,7 @@
 				2024352F1845926A00DD8EC1 /* LTAppDelegate.m in Sources */,
 				202435821845A4AD00DD8EC1 /* LTTableDrawerView.m in Sources */,
 				2024355E1845952D00DD8EC1 /* LTLoadingViewController.m in Sources */,
+				20B4096A184664BE00F0016A /* LTSettingsViewController.m in Sources */,
 				2024355B1845937A00DD8EC1 /* LTX10ViewController.m in Sources */,
 				2024352B1845926A00DD8EC1 /* main.m in Sources */,
 			);
