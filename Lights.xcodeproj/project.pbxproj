@@ -38,6 +38,7 @@
 		2024357E1845961100DD8EC1 /* turtle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2024356E1845961100DD8EC1 /* turtle.png */; };
 		2024357F1845961100DD8EC1 /* turtle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2024356F1845961100DD8EC1 /* turtle@2x.png */; };
 		202435821845A4AD00DD8EC1 /* LTTableDrawerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 202435811845A4AD00DD8EC1 /* LTTableDrawerView.m */; };
+		20A49A3B1846B40F004A0539 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A49A3A1846B40F004A0539 /* libTestFlight.a */; };
 		20B4096A184664BE00F0016A /* LTSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B40969184664BE00F0016A /* LTSettingsViewController.m */; };
 		20B4096D18466A1500F0016A /* LTColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B4096C18466A1500F0016A /* LTColorViewController.m */; };
 		20B4098718466AA500F0016A /* checkerboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B4096F18466AA500F0016A /* checkerboard.png */; };
@@ -107,6 +108,10 @@
 		2024356F1845961100DD8EC1 /* turtle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "turtle@2x.png"; sourceTree = "<group>"; };
 		202435801845A4AD00DD8EC1 /* LTTableDrawerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTableDrawerView.h; sourceTree = "<group>"; };
 		202435811845A4AD00DD8EC1 /* LTTableDrawerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTableDrawerView.m; sourceTree = "<group>"; };
+		20A49A3A1846B40F004A0539 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		20A49A3C1846B41A004A0539 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		20A49A3D1846B41A004A0539 /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
+		20A49A3E1846B41A004A0539 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
 		20B40968184664BE00F0016A /* LTSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTSettingsViewController.h; sourceTree = "<group>"; };
 		20B40969184664BE00F0016A /* LTSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTSettingsViewController.m; sourceTree = "<group>"; };
 		20B4096B18466A1500F0016A /* LTColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTColorViewController.h; sourceTree = "<group>"; };
@@ -144,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20A49A3B1846B40F004A0539 /* libTestFlight.a in Frameworks */,
 				202435211845926A00DD8EC1 /* CoreGraphics.framework in Frameworks */,
 				202435231845926A00DD8EC1 /* UIKit.framework in Frameworks */,
 				2024351F1845926A00DD8EC1 /* Foundation.framework in Frameworks */,
@@ -187,6 +193,7 @@
 		2024351D1845926A00DD8EC1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				20A49A3A1846B40F004A0539 /* libTestFlight.a */,
 				2024351E1845926A00DD8EC1 /* Foundation.framework */,
 				202435201845926A00DD8EC1 /* CoreGraphics.framework */,
 				202435221845926A00DD8EC1 /* UIKit.framework */,
@@ -212,6 +219,7 @@
 				20B40969184664BE00F0016A /* LTSettingsViewController.m */,
 				202435801845A4AD00DD8EC1 /* LTTableDrawerView.h */,
 				202435811845A4AD00DD8EC1 /* LTTableDrawerView.m */,
+				20A49A3F1846B41E004A0539 /* TestFlight */,
 				2024355F184595E700DD8EC1 /* Images */,
 				2024353C1845926A00DD8EC1 /* Images.xcassets */,
 				202435251845926A00DD8EC1 /* Supporting Files */,
@@ -269,6 +277,16 @@
 				2024356F1845961100DD8EC1 /* turtle@2x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		20A49A3F1846B41E004A0539 /* TestFlight */ = {
+			isa = PBXGroup;
+			children = (
+				20A49A3C1846B41A004A0539 /* TestFlight.h */,
+				20A49A3D1846B41A004A0539 /* TestFlight+AsyncLogging.h */,
+				20A49A3E1846B41A004A0539 /* TestFlight+ManualSessions.h */,
+			);
+			name = TestFlight;
 			sourceTree = "<group>";
 		};
 		20B4096E18466AA500F0016A /* ColorPicker */ = {
@@ -600,6 +618,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Lights/Lights-Prefix.pch";
 				INFOPLIST_FILE = "Lights/Lights-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/evan/Projects/New\\ Lights/Lights\\ iOS",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -615,6 +637,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Lights/Lights-Prefix.pch";
 				INFOPLIST_FILE = "Lights/Lights-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/evan/Projects/New\\ Lights/Lights\\ iOS",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
