@@ -46,7 +46,7 @@
     
     NSString *serverString = [[NSUserDefaults standardUserDefaults] objectForKey:@"LTServerKey"];
     if (!serverString) {
-        serverString = @"ws://home.evancoleman.net:9000";
+        serverString = @"";
         [[NSUserDefaults standardUserDefaults] setObject:serverString forKey:@"LTServerKey"];
     }
     
