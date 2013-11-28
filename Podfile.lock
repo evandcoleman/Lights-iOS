@@ -1,10 +1,14 @@
 PODS:
+  - BlocksKit (1.8.3):
+    - libffi
   - HHPanningTableViewCell (2.0.0)
+  - libffi (3.0.13)
   - LightsKit (1.0.5):
     - SocketRocket
   - SocketRocket (0.3.1-beta2)
 
 DEPENDENCIES:
+  - BlocksKit
   - HHPanningTableViewCell
   - LightsKit (from `https://raw.github.com/edc1591/LightsKit/master/LightsKit.podspec`)
 
@@ -13,7 +17,9 @@ EXTERNAL SOURCES:
     :podspec: https://raw.github.com/edc1591/LightsKit/master/LightsKit.podspec
 
 SPEC CHECKSUMS:
+  BlocksKit: 27257f9cbbec0ea98c80ba83cc2ea7111ae62eb2
   HHPanningTableViewCell: 16b23eb06b99121c7fd678b6f54700338317b008
+  libffi: 64ef39353e747bb2b25e1026afd96a157bf9231c
   LightsKit: 957f61fa565fefe18a17250958e3e4dec193d0a8
   SocketRocket: 7ac946bcce46287a791dfff3c1f8daa692821dae
 
