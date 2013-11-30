@@ -11,6 +11,11 @@
 #import "LTX10ViewController.h"
 #import "LTSettingsViewController.h"
 #import "LTColorViewController.h"
+#import <BlocksKit/UIAlertView+BlocksKit.h>
+#import <SSKeychain/SSKeychain.h>
+
+#define kDefaultServerURL @"http://lights.edc.me"
+#define kServiceName @"edc-lights"
 
 @interface LTAppDelegate ()
 
@@ -21,7 +26,7 @@
 @implementation LTAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [TestFlight takeOff:@"720acb95-5a0f-4684-a874-3a92dbdc6fa2"];
+    [TestFlight takeOff:@"4d76814c-d4ac-4fe7-933b-f0ed44b4c787"];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
@@ -44,16 +49,7 @@
     
     [self.tabBarController presentViewController:self.loadingViewController animated:NO completion:NULL];
     
-    NSString *serverString = [[NSUserDefaults standardUserDefaults] objectForKey:@"LTServerKey"];
-    if (!serverString) {
-        serverString = [self.serverURLs firstObject];
-        [[NSUserDefaults standardUserDefaults] setObject:serverString forKey:@"LTServerKey"];
-    }
-    
-    self.session = [[LKSession alloc] initWithServer:[NSURL URLWithString:serverString]];
-    [self.session openSessionWithCompletion:^{
-        [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
-    }];
+    [self loginAndOpenSession];
     
     return YES;
 }
@@ -80,10 +76,73 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-#pragma mark - Public methods
+#pragma mark - Server stuff
 
-- (NSArray *)serverURLs {
-    return @[@"ws://example.com:9000"];
+- (NSString *)serverURL {
+    NSString *serverString = [[NSUserDefaults standardUserDefaults] objectForKey:@"LTServerKey"];
+    if (!serverString) {
+        serverString = kDefaultServerURL;
+        [[NSUserDefaults standardUserDefaults] setObject:serverString forKey:@"LTServerKey"];
+    }
+    return serverString;
+}
+
+- (void)loginAndOpenSession {
+    // Check for username
+    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"LTUsername"];
+    
+    if (!username || username.length == 0) {
+        UIAlertView *alertView = [UIAlertView bk_alertViewWithTitle:@"Login" message:@"Please enter your username."];
+        [alertView bk_addButtonWithTitle:@"OK" handler:^{
+            [[NSUserDefaults standardUserDefaults] setObject:[alertView textFieldAtIndex:0].text forKey:@"LTUsername"];
+            [self maybeSetPasswordWithUsername:[alertView textFieldAtIndex:0].text completion:^(NSString *password){
+                [self openSessionWithUsername:[alertView textFieldAtIndex:0].text andPassword:password];
+            }];
+        }];
+        alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+        [alertView show];
+    } else {
+        [self maybeSetPasswordWithUsername:username completion:^(NSString *password) {
+            [self openSessionWithUsername:username andPassword:password];
+        }];
+    }
+}
+
+- (void)maybeSetPasswordWithUsername:(NSString *)username completion:(void(^)(NSString *password))completion {
+    LKUserSession *userSession = [[LKUserSession alloc] initWithServer:[NSURL URLWithString:[self serverURL]]];
+    [userSession usernameHasPassword:username completion:^(BOOL hasPassword) {
+        if (hasPassword) {
+            NSString *password = [SSKeychain passwordForService:kServiceName account:username];
+            if (password && password.length > 0) {
+                completion(password);
+            } else {
+                UIAlertView *alertView = [UIAlertView bk_alertViewWithTitle:@"Login" message:@"Please enter your password"];
+                alertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
+                [alertView bk_addButtonWithTitle:@"Login" handler:^{
+                    [SSKeychain setPassword:[alertView textFieldAtIndex:0].text forService:kServiceName account:username];
+                    completion([alertView textFieldAtIndex:0].text);
+                }];
+                [alertView show];
+            }
+        } else {
+            UIAlertView *alertView = [UIAlertView bk_alertViewWithTitle:@"Login" message:@"Please choose a password."];
+            alertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
+            [alertView bk_addButtonWithTitle:@"Set Password" handler:^{
+                [SSKeychain setPassword:[alertView textFieldAtIndex:0].text forService:kServiceName account:username];
+                [userSession setPassword:[alertView textFieldAtIndex:0].text forUsername:username completion:^{
+                    [self openSessionWithUsername:username andPassword:[alertView textFieldAtIndex:0].text];
+                }];
+            }];
+            [alertView show];
+        }
+    }];
+}
+
+- (void)openSessionWithUsername:(NSString *)username andPassword:(NSString *)password {
+    self.session = [[LKSession alloc] initWithServer:[NSURL URLWithString:[self serverURL]]];
+    [self.session openSessionWithUsername:username password:password completion:^{
+        [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
+    }];
 }
 
 @end

@@ -13,6 +13,5 @@
 @property (nonatomic) UIWindow *window;
 @property (nonatomic) LKSession *session;
 @property (nonatomic) UITabBarController *tabBarController;
-@property (nonatomic, readonly) NSArray *serverURLs;
 
 @end

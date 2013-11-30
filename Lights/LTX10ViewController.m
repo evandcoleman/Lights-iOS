@@ -69,13 +69,13 @@
 #pragma mark - Interface actions
 
 - (void)allOn:(id)sender {
-    LKEvent *event = [LKEvent x10EventWithDevice:nil command:LKX10CommandAllUnitsOn];
-    [self.session sendEvent:event];
+    LKEventCollection *collection = [LKEventCollection collectionWithDevices:self.devices command:LKX10CommandOn];
+    [self.session sendEventCollection:collection];
 }
 
 - (void)allOff:(id)sender {
-    LKEvent *event = [LKEvent x10EventWithDevice:nil command:LKX10CommandAllUnitsOff];
-    [self.session sendEvent:event];
+    LKEventCollection *collection = [LKEventCollection collectionWithDevices:self.devices command:LKX10CommandOff];
+    [self.session sendEventCollection:collection];
 }
 
 #pragma mark - Table view delegate

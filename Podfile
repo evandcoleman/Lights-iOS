@@ -1,5 +1,6 @@
 platform :ios, '7.0'
 
 pod 'BlocksKit'
-pod 'LightsKit', :podspec => 'https://raw.github.com/edc1591/LightsKit/master/LightsKit.podspec'
+pod 'LightsKit', :git => 'https://github.com/edc1591/LightsKit.git'
 pod 'HHPanningTableViewCell'
+pod 'SSKeychain'
