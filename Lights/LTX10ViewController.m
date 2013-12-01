@@ -11,12 +11,13 @@
 #import "LTTableDrawerView.h"
 #import <HHPanningTableViewCell/HHPanningTableViewCell.h>
 
-@interface LTX10ViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface LTX10ViewController () <UITableViewDataSource, UITableViewDelegate, HHPanningTableViewCellDelegate>
 
 @property (nonatomic) UITableView *tableView;
 
 @property (nonatomic, readonly) LKSession *session;
 @property (nonatomic) NSArray *devices;
+@property (nonatomic) HHPanningTableViewCell *openCell;
 
 @end
 
@@ -69,9 +70,8 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    [(HHPanningTableViewCell *)[self.tableView cellForRowAtIndexPath:[self.tableView indexPathForSelectedRow]] setDrawerRevealed:NO animated:YES];
-    
-    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:NO];
+    [self.openCell setDrawerRevealed:NO animated:NO];
+    self.openCell = nil;
 }
 
 #pragma mark - Interface actions
@@ -89,11 +89,14 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [(HHPanningTableViewCell *)[tableView cellForRowAtIndexPath:indexPath] setDrawerRevealed:YES animated:YES];
+    self.openCell = (HHPanningTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [self.openCell setDrawerRevealed:YES animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [(HHPanningTableViewCell *)[self.tableView cellForRowAtIndexPath:[self.tableView indexPathForSelectedRow]] setDrawerRevealed:NO animated:YES];
+    [self.openCell setDrawerRevealed:NO animated:YES];
+    self.openCell = nil;
     
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:NO];
 }
@@ -115,6 +118,7 @@
     
     if (!cell) {
         cell = [[HHPanningTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.delegate = self;
         
         LTTableDrawerView *drawerView = [[LTTableDrawerView alloc] initWithFrame:cell.frame];
         cell.drawerView = drawerView;
@@ -131,6 +135,12 @@
     [(LTTableDrawerView *)cell.drawerView setDevice:self.devices[indexPath.row]];
     
     return cell;
+}
+
+#pragma mark - HHPanningTableViewCell delegate
+
+- (void)panningTableViewCell:(HHPanningTableViewCell *)cell didTriggerWithDirection:(HHPanningTableViewCellDirection)direction {
+    self.openCell = cell;
 }
 
 #pragma mark - Helpers
