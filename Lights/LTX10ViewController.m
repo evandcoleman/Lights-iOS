@@ -66,6 +66,14 @@
     }];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [(HHPanningTableViewCell *)[self.tableView cellForRowAtIndexPath:[self.tableView indexPathForSelectedRow]] setDrawerRevealed:NO animated:YES];
+    
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:NO];
+}
+
 #pragma mark - Interface actions
 
 - (void)allOn:(id)sender {
