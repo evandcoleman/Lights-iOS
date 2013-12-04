@@ -14,8 +14,10 @@
 #import <BlocksKit/UIAlertView+BlocksKit.h>
 #import <SSKeychain/SSKeychain.h>
 
-#define kDefaultServerURL @"http://example.com"
-#define kServiceName @"lights-app"
+//#define kDefaultServerURL @"http://example.com"
+//#define kServiceName @"lights-app"
+#define kDefaultServerURL @"http://lights.edc.me"
+#define kServiceName @"edc-lights"
 
 @interface LTAppDelegate ()
 
@@ -26,7 +28,7 @@
 @implementation LTAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    //[TestFlight takeOff:@""];
+    [TestFlight takeOff:@"4d76814c-d4ac-4fe7-933b-f0ed44b4c787"];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     

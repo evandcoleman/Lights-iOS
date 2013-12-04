@@ -9,15 +9,15 @@
 #import "LTX10ViewController.h"
 #import "LTAppDelegate.h"
 #import "LTTableDrawerView.h"
-#import <HHPanningTableViewCell/HHPanningTableViewCell.h>
+#import "LTPanningTableViewCell.h"
 
-@interface LTX10ViewController () <UITableViewDataSource, UITableViewDelegate, HHPanningTableViewCellDelegate>
+@interface LTX10ViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic) UITableView *tableView;
 
 @property (nonatomic, readonly) LKSession *session;
 @property (nonatomic) NSArray *devices;
-@property (nonatomic) HHPanningTableViewCell *openCell;
+@property (nonatomic) LTPanningTableViewCell *openCell;
 
 @end
 
@@ -89,7 +89,8 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.openCell = (HHPanningTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [self.openCell setDrawerRevealed:NO animated:YES];
+    self.openCell = (LTPanningTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     [self.openCell setDrawerRevealed:YES animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
@@ -114,15 +115,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"X10DeviceCell";
     
-    HHPanningTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    LTPanningTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (!cell) {
-        cell = [[HHPanningTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.delegate = self;
+        cell = [[LTPanningTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         LTTableDrawerView *drawerView = [[LTTableDrawerView alloc] initWithFrame:cell.frame];
         cell.drawerView = drawerView;
-        cell.directionMask = HHPanningTableViewCellDirectionLeft;
         
         drawerView.onTapButton = ^(LTTableDrawerView *sender, LKX10Command command) {
             [self.session sendEvent:[LKEvent x10EventWithDevice:sender.device command:command]];
@@ -135,12 +135,6 @@
     [(LTTableDrawerView *)cell.drawerView setDevice:self.devices[indexPath.row]];
     
     return cell;
-}
-
-#pragma mark - HHPanningTableViewCell delegate
-
-- (void)panningTableViewCell:(HHPanningTableViewCell *)cell didTriggerWithDirection:(HHPanningTableViewCellDirection)direction {
-    self.openCell = cell;
 }
 
 #pragma mark - Helpers

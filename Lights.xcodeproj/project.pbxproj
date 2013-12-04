@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		201DA55D184EC5D00061E8C3 /* LTPanningTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 201DA55C184EC5D00061E8C3 /* LTPanningTableViewCell.m */; };
+		201DA560184ED6A80061E8C3 /* LTInnerShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 201DA55F184ED6A80061E8C3 /* LTInnerShadowView.m */; };
 		2024351F1845926A00DD8EC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2024351E1845926A00DD8EC1 /* Foundation.framework */; };
 		202435211845926A00DD8EC1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202435201845926A00DD8EC1 /* CoreGraphics.framework */; };
 		202435231845926A00DD8EC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202435221845926A00DD8EC1 /* UIKit.framework */; };
@@ -72,6 +74,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		201DA55B184EC5D00061E8C3 /* LTPanningTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTPanningTableViewCell.h; sourceTree = "<group>"; };
+		201DA55C184EC5D00061E8C3 /* LTPanningTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTPanningTableViewCell.m; sourceTree = "<group>"; };
+		201DA55E184ED6A80061E8C3 /* LTInnerShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTInnerShadowView.h; sourceTree = "<group>"; };
+		201DA55F184ED6A80061E8C3 /* LTInnerShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTInnerShadowView.m; sourceTree = "<group>"; };
 		2024351B1845926A00DD8EC1 /* Lights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lights.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2024351E1845926A00DD8EC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		202435201845926A00DD8EC1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -227,6 +233,10 @@
 				20B40969184664BE00F0016A /* LTSettingsViewController.m */,
 				202435801845A4AD00DD8EC1 /* LTTableDrawerView.h */,
 				202435811845A4AD00DD8EC1 /* LTTableDrawerView.m */,
+				201DA55B184EC5D00061E8C3 /* LTPanningTableViewCell.h */,
+				201DA55C184EC5D00061E8C3 /* LTPanningTableViewCell.m */,
+				201DA55E184ED6A80061E8C3 /* LTInnerShadowView.h */,
+				201DA55F184ED6A80061E8C3 /* LTInnerShadowView.m */,
 				20A49A3F1846B41E004A0539 /* TestFlight */,
 				2024355F184595E700DD8EC1 /* Images */,
 				203578FF184AAEBC00DAC1B8 /* Images.xcassets */,
@@ -486,8 +496,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				20B4099518466AA500F0016A /* UIColor-Expanded.m in Sources */,
+				201DA560184ED6A80061E8C3 /* LTInnerShadowView.m in Sources */,
 				20B4099218466AA500F0016A /* KZUnitSlider.m in Sources */,
 				2024352F1845926A00DD8EC1 /* LTAppDelegate.m in Sources */,
+				201DA55D184EC5D00061E8C3 /* LTPanningTableViewCell.m in Sources */,
 				20B4099118466AA500F0016A /* KZColorPickerSwatchView.m in Sources */,
 				20B4096D18466A1500F0016A /* LTColorViewController.m in Sources */,
 				202435821845A4AD00DD8EC1 /* LTTableDrawerView.m in Sources */,
