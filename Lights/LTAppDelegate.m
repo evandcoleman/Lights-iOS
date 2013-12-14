@@ -11,13 +11,12 @@
 #import "LTX10ViewController.h"
 #import "LTSettingsViewController.h"
 #import "LTColorBaseViewController.h"
+#import "LTScheduleTableViewController.h"
 #import <BlocksKit/UIAlertView+BlocksKit.h>
 #import <SSKeychain/SSKeychain.h>
 
-//#define kDefaultServerURL @"http://example.com"
-//#define kServiceName @"lights-app"
-#define kDefaultServerURL @"http://lights.edc.me"
-#define kServiceName @"edc-lights"
+#define kDefaultServerURL @"http://example.com"
+#define kServiceName @"lights-app"
 
 @interface LTAppDelegate ()
 
@@ -37,10 +36,13 @@
     UINavigationController *colorViewController = [[UINavigationController alloc] initWithRootViewController:[[LTColorBaseViewController alloc] init]];
     colorViewController.title = @"Colors";
     colorViewController.tabBarItem.image = [UIImage imageNamed:@"flower"];
+    UINavigationController *scheduleViewController = [[UINavigationController alloc] initWithRootViewController:[[LTScheduleTableViewController alloc] init]];
+    scheduleViewController.title = @"Schedule";
+    scheduleViewController.tabBarItem.image = [UIImage imageNamed:@"schedule"];
     UINavigationController *settingsViewController = [[UINavigationController alloc] initWithRootViewController:[[LTSettingsViewController alloc] init]];
     settingsViewController.title = @"Settings";
     settingsViewController.tabBarItem.image = [UIImage imageNamed:@"gear"];
-    self.tabBarController.viewControllers = @[x10ViewController, colorViewController, settingsViewController];
+    self.tabBarController.viewControllers = @[x10ViewController, colorViewController, scheduleViewController, settingsViewController];
     
     self.window.rootViewController = self.tabBarController;
     

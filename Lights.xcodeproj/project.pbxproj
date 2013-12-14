@@ -40,6 +40,8 @@
 		2024357E1845961100DD8EC1 /* turtle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2024356E1845961100DD8EC1 /* turtle.png */; };
 		2024357F1845961100DD8EC1 /* turtle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2024356F1845961100DD8EC1 /* turtle@2x.png */; };
 		202435821845A4AD00DD8EC1 /* LTTableDrawerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 202435811845A4AD00DD8EC1 /* LTTableDrawerView.m */; };
+		20329D8D185CF2680082D958 /* LTScheduleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20329D8C185CF2680082D958 /* LTScheduleTableViewController.m */; };
+		20329D90185CF4FE0082D958 /* LTScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20329D8F185CF4FE0082D958 /* LTScheduleCell.m */; };
 		203578F8184A8DBF00DAC1B8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 203578F7184A8DBE00DAC1B8 /* Security.framework */; };
 		20357900184AAEBC00DAC1B8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 203578FF184AAEBC00DAC1B8 /* Images.xcassets */; };
 		20709965185AB1AA004B9898 /* checkerboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 2070994D185AB1AA004B9898 /* checkerboard.png */; };
@@ -120,6 +122,10 @@
 		2024356F1845961100DD8EC1 /* turtle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "turtle@2x.png"; sourceTree = "<group>"; };
 		202435801845A4AD00DD8EC1 /* LTTableDrawerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTableDrawerView.h; sourceTree = "<group>"; };
 		202435811845A4AD00DD8EC1 /* LTTableDrawerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTableDrawerView.m; sourceTree = "<group>"; };
+		20329D8B185CF2680082D958 /* LTScheduleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTScheduleTableViewController.h; sourceTree = "<group>"; };
+		20329D8C185CF2680082D958 /* LTScheduleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTScheduleTableViewController.m; sourceTree = "<group>"; };
+		20329D8E185CF4FE0082D958 /* LTScheduleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTScheduleCell.h; sourceTree = "<group>"; };
+		20329D8F185CF4FE0082D958 /* LTScheduleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTScheduleCell.m; sourceTree = "<group>"; };
 		203578F7184A8DBE00DAC1B8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		203578FF184AAEBC00DAC1B8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2070994D185AB1AA004B9898 /* checkerboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkerboard.png; sourceTree = "<group>"; };
@@ -244,6 +250,8 @@
 				2070997B185ABC8D004B9898 /* LTColorAnimateViewController.m */,
 				20709981185ACC3B004B9898 /* LTColorSwatchesViewController.h */,
 				20709982185ACC3B004B9898 /* LTColorSwatchesViewController.m */,
+				20329D8B185CF2680082D958 /* LTScheduleTableViewController.h */,
+				20329D8C185CF2680082D958 /* LTScheduleTableViewController.m */,
 				20B40968184664BE00F0016A /* LTSettingsViewController.h */,
 				20B40969184664BE00F0016A /* LTSettingsViewController.m */,
 				202435801845A4AD00DD8EC1 /* LTTableDrawerView.h */,
@@ -252,6 +260,8 @@
 				201DA55C184EC5D00061E8C3 /* LTPanningTableViewCell.m */,
 				201DA55E184ED6A80061E8C3 /* LTInnerShadowView.h */,
 				201DA55F184ED6A80061E8C3 /* LTInnerShadowView.m */,
+				20329D8E185CF4FE0082D958 /* LTScheduleCell.h */,
+				20329D8F185CF4FE0082D958 /* LTScheduleCell.m */,
 				20A49A3F1846B41E004A0539 /* TestFlight */,
 				2024355F184595E700DD8EC1 /* Images */,
 				203578FF184AAEBC00DAC1B8 /* Images.xcassets */,
@@ -514,11 +524,13 @@
 				20709969185AB1AA004B9898 /* HSV.c in Sources */,
 				2070996D185AB1AA004B9898 /* KZColorPickerBrightnessSlider.m in Sources */,
 				201DA560184ED6A80061E8C3 /* LTInnerShadowView.m in Sources */,
+				20329D90185CF4FE0082D958 /* LTScheduleCell.m in Sources */,
 				20709970185AB1AA004B9898 /* KZUnitSlider.m in Sources */,
 				2070996E185AB1AA004B9898 /* KZColorPickerHSWheel.m in Sources */,
 				20709973185AB1AA004B9898 /* UIColor-Expanded.m in Sources */,
 				2070996C185AB1AA004B9898 /* KZColorPickerAlphaSlider.m in Sources */,
 				2070996F185AB1AA004B9898 /* KZColorPickerSwatchView.m in Sources */,
+				20329D8D185CF2680082D958 /* LTScheduleTableViewController.m in Sources */,
 				2024352F1845926A00DD8EC1 /* LTAppDelegate.m in Sources */,
 				201DA55D184EC5D00061E8C3 /* LTPanningTableViewCell.m in Sources */,
 				20B4096D18466A1500F0016A /* LTColorBaseViewController.m in Sources */,
