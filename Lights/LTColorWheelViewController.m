@@ -52,7 +52,7 @@ RGBType rgbWithUIColor(UIColor *color);
     LKSession *session = [(LTAppDelegate *)[[UIApplication sharedApplication] delegate] session];
     [session queryStateWithBlock:^(LKEvent *event) {
         if (event.type == LKEventTypeSolid) {
-            self.selectedColor = [UIColor colorWithRed:event.color.red/255 green:event.color.green/255 blue:event.color.blue/255 alpha:1.0];
+            self.selectedColor = [UIColor colorWithRed:event.color.red/255.0 green:event.color.green/255.0 blue:event.color.blue/255.0 alpha:1.0];
         }
     }];
 }
@@ -81,7 +81,7 @@ RGBType rgbWithUIColor(UIColor *color);
 - (void)sendColorEvent {
     RGBType rgb = rgbWithUIColor(self.selectedColor);
     LKSession *session = [(LTAppDelegate *)[[UIApplication sharedApplication] delegate] session];
-    LKColor *color = [LKColor colorWithRGB:@[@(rgb.r*255), @(rgb.g*255), @(rgb.b*255)]];
+    LKColor *color = [LKColor colorWithRGB:@[@(rgb.r*255.0), @(rgb.g*255.0), @(rgb.b*255.0)]];
     [session sendEvent:[LKEvent colorEventWithColor:color]];
 }
 

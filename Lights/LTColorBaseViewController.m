@@ -45,6 +45,8 @@
     [self.segmentedControl addTarget:self action:@selector(segmentSelected:) forControlEvents:UIControlEventValueChanged];
     self.segmentedControl.selectedSegmentIndex = 0;
     self.navigationItem.titleView = self.segmentedControl;
+    
+    [self segmentSelected:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
