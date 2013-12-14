@@ -16,9 +16,12 @@
 #import "KZColorPickerSwatchView.h"
 #import "KZColorCompareView.h"
 
+#define IS_IPAD ([[UIDevice currentDevice] respondsToSelector:@selector(userInterfaceIdiom)] && [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+
 @interface KZColorPicker()
 @property (nonatomic, retain) KZColorPickerHSWheel *colorWheel;
 @property (nonatomic, retain) KZColorPickerBrightnessSlider *brightnessSlider;
+@property (nonatomic, retain) KZColorPickerAlphaSlider *alphaSlider;
 @property (nonatomic, retain) KZColorCompareView *currentColorView;
 @property (nonatomic, retain) NSMutableArray *swatches;
 - (void) fixLocations;

@@ -61,8 +61,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self.session queryX10DevicesWithBlock:^(LKResponse *response) {
-        self.devices = response.objects;
+    [self.session queryX10DevicesWithBlock:^(NSArray *devices) {
+        self.devices = devices;
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     }];
 }

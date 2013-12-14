@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#define IS_IPAD 0
-
 @class KZColorPickerHSWheel;
 @class KZColorPickerBrightnessSlider;
 @class KZColorPickerAlphaSlider;
@@ -31,5 +29,4 @@
 @property (nonatomic, retain) UIColor *selectedColor;
 @property (nonatomic, retain) UIColor *oldColor;
 - (void) setSelectedColor:(UIColor *)color animated:(BOOL)animated;
-@property (nonatomic, retain) KZColorPickerAlphaSlider *alphaSlider;
 @end

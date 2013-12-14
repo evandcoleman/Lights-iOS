@@ -10,7 +10,7 @@
 #import "LTLoadingViewController.h"
 #import "LTX10ViewController.h"
 #import "LTSettingsViewController.h"
-#import "LTColorViewController.h"
+#import "LTColorBaseViewController.h"
 #import <BlocksKit/UIAlertView+BlocksKit.h>
 #import <SSKeychain/SSKeychain.h>
 
@@ -34,13 +34,13 @@
     
     self.tabBarController = [[UITabBarController alloc] init];
     UINavigationController *x10ViewController = [[UINavigationController alloc] initWithRootViewController:[[LTX10ViewController alloc] init]];
-    UINavigationController *colorViewController = [[UINavigationController alloc] initWithRootViewController:[[LTColorViewController alloc] init]];
+    UINavigationController *colorViewController = [[UINavigationController alloc] initWithRootViewController:[[LTColorBaseViewController alloc] init]];
     colorViewController.title = @"Colors";
     colorViewController.tabBarItem.image = [UIImage imageNamed:@"flower"];
     UINavigationController *settingsViewController = [[UINavigationController alloc] initWithRootViewController:[[LTSettingsViewController alloc] init]];
     settingsViewController.title = @"Settings";
     settingsViewController.tabBarItem.image = [UIImage imageNamed:@"gear"];
-    self.tabBarController.viewControllers = @[x10ViewController, /*colorViewController,*/ settingsViewController];
+    self.tabBarController.viewControllers = @[x10ViewController, colorViewController, settingsViewController];
     
     self.window.rootViewController = self.tabBarController;
     

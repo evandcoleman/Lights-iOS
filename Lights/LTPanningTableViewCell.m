@@ -22,6 +22,11 @@
     if (self) {
         _drawerRevealed = NO;
         _shadowView = [[LTInnerShadowView alloc] initWithFrame:CGRectZero];
+        
+        [_shadowView setOpaque:NO];
+        [_shadowView setUserInteractionEnabled:NO];
+        [_shadowView setAutoresizesSubviews:YES];
+        [_shadowView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
     }
     return self;
 }
