@@ -73,7 +73,11 @@
 - (void)toggleState:(UISwitch *)sender {
     LKSession *session = [(LTAppDelegate *)[[UIApplication sharedApplication] delegate] session];
     LKScheduledEvent *event = self.scheduledEvents[sender.tag];
+    event.state = !event.state;
     
+    [session updateEvent:event withCompletion:^{
+        
+    }];
 }
 
 #pragma mark - Table view data source

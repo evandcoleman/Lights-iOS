@@ -670,7 +670,7 @@
 				INFOPLIST_FILE = "Lights/Lights-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/evan/Projects/New\\ Lights/Lights\\ iOS",
+					"$(SRCROOT)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "E51C7267-6398-4D49-9A99-692CC60E7849";
@@ -693,7 +693,7 @@
 				INFOPLIST_FILE = "Lights/Lights-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/evan/Projects/New\\ Lights/Lights\\ iOS",
+					"$(SRCROOT)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "E51C7267-6398-4D49-9A99-692CC60E7849";
