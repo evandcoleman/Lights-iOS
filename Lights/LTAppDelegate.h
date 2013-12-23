@@ -14,4 +14,6 @@
 @property (nonatomic) LKSession *session;
 @property (nonatomic) UITabBarController *tabBarController;
 
+- (void)loginAndOpenSession;
+
 @end
