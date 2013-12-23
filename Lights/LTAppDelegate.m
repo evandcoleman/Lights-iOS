@@ -74,6 +74,8 @@
     NSMutableArray *vcs = [NSMutableArray array];
     
     UINavigationController *x10ViewController = [[UINavigationController alloc] initWithRootViewController:[[LTX10ViewController alloc] init]];
+    x10ViewController.tabBarItem.image = [UIImage imageNamed:@"house"];
+    x10ViewController.title = @"Home";
     [vcs addObject:x10ViewController];
     
     UINavigationController *colorViewController = [[UINavigationController alloc] initWithRootViewController:[[LTColorBaseViewController alloc] init]];
