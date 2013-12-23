@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LTLoadingViewController.h"
 
 @interface LTAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic) UIWindow *window;
 @property (nonatomic) LKSession *session;
 @property (nonatomic) UITabBarController *tabBarController;
+@property (nonatomic) LTLoadingViewController *loadingViewController;
+
 
 - (void)loginAndOpenSession;
 

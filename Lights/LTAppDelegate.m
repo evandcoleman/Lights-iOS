@@ -7,7 +7,6 @@
 //
 
 #import "LTAppDelegate.h"
-#import "LTLoadingViewController.h"
 #import "LTX10ViewController.h"
 #import "LTSettingsViewController.h"
 #import "LTColorBaseViewController.h"
@@ -19,8 +18,6 @@
 #define kServiceName @"lights-app"
 
 @interface LTAppDelegate ()
-
-@property (nonatomic) LTLoadingViewController *loadingViewController;
 
 @end
 
@@ -39,8 +36,6 @@
     self.loadingViewController.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
     
     [self.window makeKeyAndVisible];
-    
-    [self.tabBarController presentViewController:self.loadingViewController animated:NO completion:NULL];
     
     [self loginAndOpenSession];
     
@@ -113,6 +108,7 @@
 }
 
 - (void)loginAndOpenSession {
+    [self.tabBarController presentViewController:self.loadingViewController animated:NO completion:NULL];
     // Check for username
     NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"LTUsername"];
     
