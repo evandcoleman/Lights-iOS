@@ -6,115 +6,95 @@
 //  Copyright (c) 2013 Evan Coleman. All rights reserved.
 //
 
-#import "LTTableViewController.h"
+#import "LTGroupedTableViewController.h"
 
-@interface LTTableViewController ()
+@interface LTGroupedTableViewController ()
+
+@property (nonatomic) NSMutableArray *selectedRowIndexes;
 
 @end
 
-@implementation LTTableViewController
+@implementation LTGroupedTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
+- (id)init {
+    self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        // Custom initialization
+        _selectedRowIndexes = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (NSDictionary *)cellDictForIndexPath:(NSIndexPath *)indexPath {
+    return self.tableHierarchyMap[indexPath.section][kLTGroupTableChildKey][indexPath.row];
+}
+
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 0;
+    return [self.tableHierarchyMap count];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 0;
+    NSDictionary *sectionDict = self.tableHierarchyMap[section];
+    return [sectionDict[kLTGroupTableChildKey] count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSDictionary *sectionDict = self.tableHierarchyMap[section];
+    return sectionDict[kLTGroupTableTitleKey];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    // Configure the cell...
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    NSDictionary *childDict = [self cellDictForIndexPath:indexPath];
+    cell.textLabel.text = childDict[kLTGroupTableTitleKey];
+    cell.detailTextLabel.text = childDict[kLTGroupTableSubtitleKey];
+    
+    if ([self.selectedRowIndexes containsObject:indexPath]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else if (childDict[kLTGroupTableChildKey]) {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *childDict = [self cellDictForIndexPath:indexPath];
+    
+    if (childDict[kLTGroupTableChildKey]) {
+        LTGroupedTableViewController *subTableViewController = [[LTGroupedTableViewController alloc] init];
+        subTableViewController.tableHierarchyMap = childDict[kLTGroupTableChildKey];
+        subTableViewController.title = childDict[kLTGroupTableTitleKey];
+        [self.navigationController pushViewController:subTableViewController animated:YES];
+    } else {
+        if ([self.selectedRowIndexes containsObject:indexPath]) {
+            [self.selectedRowIndexes removeObject:indexPath];
+        } else {
+            [self.selectedRowIndexes addObject:indexPath];
+        }
+        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end

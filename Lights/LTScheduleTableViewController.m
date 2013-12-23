@@ -9,6 +9,8 @@
 #import "LTScheduleTableViewController.h"
 #import "LTAppDelegate.h"
 #import "LTScheduleCell.h"
+#import "LTScheduleAddViewController.h"
+#import <BlocksKit/UIBarButtonItem+BlocksKit.h>
 
 @interface LTScheduleTableViewController ()
 
@@ -38,6 +40,14 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    __weak typeof(self) weakSelf = self;
+    
+    UIBarButtonItem *addBarButtonItem = [[UIBarButtonItem alloc] bk_initWithBarButtonSystemItem:UIBarButtonSystemItemAdd handler:^(id sender) {
+        LTScheduleAddViewController *scheduleAddViewController = [[LTScheduleAddViewController alloc] init];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:scheduleAddViewController];
+        [weakSelf presentViewController:navigationController animated:YES completion:NULL];
+    }];
+    self.navigationItem.leftBarButtonItem = addBarButtonItem;
     
     LKSession *session = [(LTAppDelegate *)[[UIApplication sharedApplication] delegate] session];
     [session queryAnimationsWithBlock:^(NSArray *animations) {

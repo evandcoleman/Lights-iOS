@@ -65,6 +65,10 @@
 		20A49A411846DDA1004A0539 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A49A401846DDA1004A0539 /* libz.dylib */; };
 		20B4096A184664BE00F0016A /* LTSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B40969184664BE00F0016A /* LTSettingsViewController.m */; };
 		20B4096D18466A1500F0016A /* LTColorBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B4096C18466A1500F0016A /* LTColorBaseViewController.m */; };
+		20B716801862ADA2002AA564 /* LTEventAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B7167F1862ADA2002AA564 /* LTEventAddViewController.m */; };
+		20B716841862AFA3002AA564 /* LTGroupedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B716831862AFA3002AA564 /* LTGroupedTableViewController.m */; };
+		20C533FF1862B25000E2FF7E /* LTScheduleAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C533FE1862B25000E2FF7E /* LTScheduleAddViewController.m */; };
+		20C534031862B9C400E2FF7E /* LTDatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C534021862B9C400E2FF7E /* LTDatePickerCell.m */; };
 		41A7A9EBE8784F9194B187BE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D0E8E36EC0F4B32AA11387D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -165,6 +169,14 @@
 		20B40969184664BE00F0016A /* LTSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTSettingsViewController.m; sourceTree = "<group>"; };
 		20B4096B18466A1500F0016A /* LTColorBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTColorBaseViewController.h; sourceTree = "<group>"; };
 		20B4096C18466A1500F0016A /* LTColorBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTColorBaseViewController.m; sourceTree = "<group>"; };
+		20B7167E1862ADA2002AA564 /* LTEventAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTEventAddViewController.h; sourceTree = "<group>"; };
+		20B7167F1862ADA2002AA564 /* LTEventAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTEventAddViewController.m; sourceTree = "<group>"; };
+		20B716821862AFA3002AA564 /* LTGroupedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTGroupedTableViewController.h; sourceTree = "<group>"; };
+		20B716831862AFA3002AA564 /* LTGroupedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTGroupedTableViewController.m; sourceTree = "<group>"; };
+		20C533FD1862B25000E2FF7E /* LTScheduleAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTScheduleAddViewController.h; sourceTree = "<group>"; };
+		20C533FE1862B25000E2FF7E /* LTScheduleAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTScheduleAddViewController.m; sourceTree = "<group>"; };
+		20C534011862B9C400E2FF7E /* LTDatePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTDatePickerCell.h; sourceTree = "<group>"; };
+		20C534021862B9C400E2FF7E /* LTDatePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTDatePickerCell.m; sourceTree = "<group>"; };
 		8D0E8E36EC0F4B32AA11387D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3029ED772BD495CA292EDF3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -238,30 +250,8 @@
 				2070994C185AB1AA004B9898 /* KZColorPicker */,
 				2024352D1845926A00DD8EC1 /* LTAppDelegate.h */,
 				2024352E1845926A00DD8EC1 /* LTAppDelegate.m */,
-				2024355C1845952D00DD8EC1 /* LTLoadingViewController.h */,
-				2024355D1845952D00DD8EC1 /* LTLoadingViewController.m */,
-				202435591845937A00DD8EC1 /* LTX10ViewController.h */,
-				2024355A1845937A00DD8EC1 /* LTX10ViewController.m */,
-				20B4096B18466A1500F0016A /* LTColorBaseViewController.h */,
-				20B4096C18466A1500F0016A /* LTColorBaseViewController.m */,
-				201B38AD1859684900921132 /* LTColorWheelViewController.h */,
-				201B38AE1859684900921132 /* LTColorWheelViewController.m */,
-				2070997A185ABC8D004B9898 /* LTColorAnimateViewController.h */,
-				2070997B185ABC8D004B9898 /* LTColorAnimateViewController.m */,
-				20709981185ACC3B004B9898 /* LTColorSwatchesViewController.h */,
-				20709982185ACC3B004B9898 /* LTColorSwatchesViewController.m */,
-				20329D8B185CF2680082D958 /* LTScheduleTableViewController.h */,
-				20329D8C185CF2680082D958 /* LTScheduleTableViewController.m */,
-				20B40968184664BE00F0016A /* LTSettingsViewController.h */,
-				20B40969184664BE00F0016A /* LTSettingsViewController.m */,
-				202435801845A4AD00DD8EC1 /* LTTableDrawerView.h */,
-				202435811845A4AD00DD8EC1 /* LTTableDrawerView.m */,
-				201DA55B184EC5D00061E8C3 /* LTPanningTableViewCell.h */,
-				201DA55C184EC5D00061E8C3 /* LTPanningTableViewCell.m */,
-				201DA55E184ED6A80061E8C3 /* LTInnerShadowView.h */,
-				201DA55F184ED6A80061E8C3 /* LTInnerShadowView.m */,
-				20329D8E185CF4FE0082D958 /* LTScheduleCell.h */,
-				20329D8F185CF4FE0082D958 /* LTScheduleCell.m */,
+				20B7167A1862AD3A002AA564 /* View Controllers */,
+				20B7167B1862AD4C002AA564 /* Views */,
 				20A49A3F1846B41E004A0539 /* TestFlight */,
 				2024355F184595E700DD8EC1 /* Images */,
 				203578FF184AAEBC00DAC1B8 /* Images.xcassets */,
@@ -362,6 +352,76 @@
 				20A49A3E1846B41A004A0539 /* TestFlight+ManualSessions.h */,
 			);
 			name = TestFlight;
+			sourceTree = "<group>";
+		};
+		20B7167A1862AD3A002AA564 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				20B7167D1862AD7E002AA564 /* Colors */,
+				20B716811862AF27002AA564 /* Schedule */,
+				20B7167E1862ADA2002AA564 /* LTEventAddViewController.h */,
+				20B7167F1862ADA2002AA564 /* LTEventAddViewController.m */,
+				2024355C1845952D00DD8EC1 /* LTLoadingViewController.h */,
+				2024355D1845952D00DD8EC1 /* LTLoadingViewController.m */,
+				202435591845937A00DD8EC1 /* LTX10ViewController.h */,
+				2024355A1845937A00DD8EC1 /* LTX10ViewController.m */,
+				20B40968184664BE00F0016A /* LTSettingsViewController.h */,
+				20B40969184664BE00F0016A /* LTSettingsViewController.m */,
+				20B716821862AFA3002AA564 /* LTGroupedTableViewController.h */,
+				20B716831862AFA3002AA564 /* LTGroupedTableViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		20B7167B1862AD4C002AA564 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				20C534001862B9AE00E2FF7E /* Table View Cells */,
+				202435801845A4AD00DD8EC1 /* LTTableDrawerView.h */,
+				202435811845A4AD00DD8EC1 /* LTTableDrawerView.m */,
+				201DA55E184ED6A80061E8C3 /* LTInnerShadowView.h */,
+				201DA55F184ED6A80061E8C3 /* LTInnerShadowView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		20B7167D1862AD7E002AA564 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				20B4096B18466A1500F0016A /* LTColorBaseViewController.h */,
+				20B4096C18466A1500F0016A /* LTColorBaseViewController.m */,
+				201B38AD1859684900921132 /* LTColorWheelViewController.h */,
+				201B38AE1859684900921132 /* LTColorWheelViewController.m */,
+				2070997A185ABC8D004B9898 /* LTColorAnimateViewController.h */,
+				2070997B185ABC8D004B9898 /* LTColorAnimateViewController.m */,
+				20709981185ACC3B004B9898 /* LTColorSwatchesViewController.h */,
+				20709982185ACC3B004B9898 /* LTColorSwatchesViewController.m */,
+			);
+			name = Colors;
+			sourceTree = "<group>";
+		};
+		20B716811862AF27002AA564 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				20329D8B185CF2680082D958 /* LTScheduleTableViewController.h */,
+				20329D8C185CF2680082D958 /* LTScheduleTableViewController.m */,
+				20C533FD1862B25000E2FF7E /* LTScheduleAddViewController.h */,
+				20C533FE1862B25000E2FF7E /* LTScheduleAddViewController.m */,
+			);
+			name = Schedule;
+			sourceTree = "<group>";
+		};
+		20C534001862B9AE00E2FF7E /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				201DA55B184EC5D00061E8C3 /* LTPanningTableViewCell.h */,
+				201DA55C184EC5D00061E8C3 /* LTPanningTableViewCell.m */,
+				20329D8E185CF4FE0082D958 /* LTScheduleCell.h */,
+				20329D8F185CF4FE0082D958 /* LTScheduleCell.m */,
+				20C534011862B9C400E2FF7E /* LTDatePickerCell.h */,
+				20C534021862B9C400E2FF7E /* LTDatePickerCell.m */,
+			);
+			name = "Table View Cells";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -521,6 +581,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20B716841862AFA3002AA564 /* LTGroupedTableViewController.m in Sources */,
 				20709969185AB1AA004B9898 /* HSV.c in Sources */,
 				2070996D185AB1AA004B9898 /* KZColorPickerBrightnessSlider.m in Sources */,
 				201DA560184ED6A80061E8C3 /* LTInnerShadowView.m in Sources */,
@@ -528,6 +589,8 @@
 				20709970185AB1AA004B9898 /* KZUnitSlider.m in Sources */,
 				2070996E185AB1AA004B9898 /* KZColorPickerHSWheel.m in Sources */,
 				20709973185AB1AA004B9898 /* UIColor-Expanded.m in Sources */,
+				20C534031862B9C400E2FF7E /* LTDatePickerCell.m in Sources */,
+				20B716801862ADA2002AA564 /* LTEventAddViewController.m in Sources */,
 				2070996C185AB1AA004B9898 /* KZColorPickerAlphaSlider.m in Sources */,
 				2070996F185AB1AA004B9898 /* KZColorPickerSwatchView.m in Sources */,
 				20329D8D185CF2680082D958 /* LTScheduleTableViewController.m in Sources */,
@@ -536,6 +599,7 @@
 				20B4096D18466A1500F0016A /* LTColorBaseViewController.m in Sources */,
 				201B38AF1859684900921132 /* LTColorWheelViewController.m in Sources */,
 				2070996B185AB1AA004B9898 /* KZColorPicker.m in Sources */,
+				20C533FF1862B25000E2FF7E /* LTScheduleAddViewController.m in Sources */,
 				202435821845A4AD00DD8EC1 /* LTTableDrawerView.m in Sources */,
 				2070997C185ABC8D004B9898 /* LTColorAnimateViewController.m in Sources */,
 				2024355E1845952D00DD8EC1 /* LTLoadingViewController.m in Sources */,

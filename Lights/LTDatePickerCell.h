@@ -10,4 +10,8 @@
 
 @interface LTDatePickerCell : UITableViewCell
 
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
+
+@property (nonatomic) UIDatePicker *datePicker;
+
 @end

@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LTTableViewController : UITableViewController
+#define kLTGroupTableTitleKey @"LTGroupTableTitleKey"
+#define kLTGroupTableSubtitleKey @"LTGroupTableSubtitleKey"
+#define kLTGroupTableChildKey @"LTGroupTableChildKey"
+
+@interface LTGroupedTableViewController : UITableViewController
+
+@property (nonatomic) NSArray *tableHierarchyMap;
+
+- (NSDictionary *)cellDictForIndexPath:(NSIndexPath *)indexPath;
 
 @end
