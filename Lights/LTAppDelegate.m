@@ -15,10 +15,8 @@
 #import <BlocksKit/UIAlertView+BlocksKit.h>
 #import <SSKeychain/SSKeychain.h>
 
-//#define kDefaultServerURL @"http://example.com"
-//#define kServiceName @"lights-app"
-#define kDefaultServerURL @"http://lights.edc.me"
-#define kServiceName @"edc-lights"
+#define kDefaultServerURL @"http://example.com"
+#define kServiceName @"lights-app"
 
 @interface LTAppDelegate ()
 
@@ -78,17 +76,29 @@
 }
 
 - (void)setupTabBarControllerWithColors:(BOOL)colors {
+    NSMutableArray *vcs = [NSMutableArray array];
+    
     UINavigationController *x10ViewController = [[UINavigationController alloc] initWithRootViewController:[[LTX10ViewController alloc] init]];
+    [vcs addObject:x10ViewController];
+    
     UINavigationController *colorViewController = [[UINavigationController alloc] initWithRootViewController:[[LTColorBaseViewController alloc] init]];
     colorViewController.title = @"Colors";
     colorViewController.tabBarItem.image = [UIImage imageNamed:@"flower"];
+    if (colors) {
+        [vcs addObject:colorViewController];
+    }
+    
     UINavigationController *scheduleViewController = [[UINavigationController alloc] initWithRootViewController:[[LTScheduleTableViewController alloc] init]];
     scheduleViewController.title = @"Schedule";
     scheduleViewController.tabBarItem.image = [UIImage imageNamed:@"schedule"];
+    [vcs addObject:scheduleViewController];
+    
     UINavigationController *settingsViewController = [[UINavigationController alloc] initWithRootViewController:[[LTSettingsViewController alloc] init]];
     settingsViewController.title = @"Settings";
     settingsViewController.tabBarItem.image = [UIImage imageNamed:@"gear"];
-    self.tabBarController.viewControllers = @[x10ViewController, colorViewController, scheduleViewController, settingsViewController];
+    [vcs addObject:settingsViewController];
+    
+    self.tabBarController.viewControllers = vcs;
 }
 
 #pragma mark - Server stuff
@@ -156,7 +166,7 @@
 - (void)openSessionWithUsername:(NSString *)username andPassword:(NSString *)password {
     self.session = [[LKSession alloc] initWithServer:[NSURL URLWithString:[self serverURL]]];
     [self.session openSessionWithUsername:username password:password completion:^(NSDictionary *userDict){
-        [self setupTabBarControllerWithColors:([userDict[@"color_zones"] count] > 0)];
+        [self setupTabBarControllerWithColors:(userDict[@"color_zones"] != (id)[NSNull null])];
         [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
     }];
 }
