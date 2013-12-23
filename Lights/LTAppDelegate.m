@@ -88,10 +88,10 @@
         [vcs addObject:colorViewController];
     }
     
-    UINavigationController *scheduleViewController = [[UINavigationController alloc] initWithRootViewController:[[LTScheduleTableViewController alloc] init]];
-    scheduleViewController.title = @"Schedule";
-    scheduleViewController.tabBarItem.image = [UIImage imageNamed:@"schedule"];
-    [vcs addObject:scheduleViewController];
+//    UINavigationController *scheduleViewController = [[UINavigationController alloc] initWithRootViewController:[[LTScheduleTableViewController alloc] init]];
+//    scheduleViewController.title = @"Schedule";
+//    scheduleViewController.tabBarItem.image = [UIImage imageNamed:@"schedule"];
+//    [vcs addObject:scheduleViewController];
     
     UINavigationController *settingsViewController = [[UINavigationController alloc] initWithRootViewController:[[LTSettingsViewController alloc] init]];
     settingsViewController.title = @"Settings";
