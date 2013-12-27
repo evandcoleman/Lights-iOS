@@ -113,6 +113,7 @@ RGBType rgbWithUIColor(UIColor *color);
 #pragma mark - Interface actions
 
 - (void)brightnessChanged:(id)sender {
+    self.selectedColor = self.selectedColor; // h4x
     [self sendColorEvent];
 }
 
