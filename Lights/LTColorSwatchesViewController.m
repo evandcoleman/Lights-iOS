@@ -113,7 +113,9 @@ RGBType rgbWithUIColor(UIColor *color);
 #pragma mark - Interface actions
 
 - (void)brightnessChanged:(id)sender {
-    self.selectedColor = self.selectedColor; // h4x
+    RGBType rgb = rgbWithUIColor(self.selectedColor);
+	HSVType hsv = RGB_to_HSV(rgb);
+    self.selectedColor = [UIColor colorWithHue:hsv.h saturation:hsv.s brightness:self.brightnessSlider.value alpha:1.0];
     [self sendColorEvent];
 }
 
