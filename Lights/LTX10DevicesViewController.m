@@ -6,12 +6,12 @@
 //  Copyright (c) 2013 Evan Coleman. All rights reserved.
 //
 
-#import "LTX10ViewController.h"
+#import "LTX10DevicesViewController.h"
 #import "LTAppDelegate.h"
 #import "LTTableDrawerView.h"
 #import "LTPanningTableViewCell.h"
 
-@interface LTX10ViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface LTX10DevicesViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic) UITableView *tableView;
 
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation LTX10ViewController
+@implementation LTX10DevicesViewController
 
 - (id)init {
     self = [super initWithNibName:nil bundle:nil];
@@ -43,15 +43,15 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.frame = CGRectMake(0, 100, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 150);
+    self.tableView.frame = CGRectMake(0, 34, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 150);
     
     [onButton setTitle:@"All On" forState:UIControlStateNormal];
     [offButton setTitle:@"All Off" forState:UIControlStateNormal];
     [onButton addTarget:self action:@selector(allOn:) forControlEvents:UIControlEventTouchUpInside];
     [offButton addTarget:self action:@selector(allOff:) forControlEvents:UIControlEventTouchUpInside];
     CGFloat width = CGRectGetWidth(self.view.frame) / 2;
-    onButton.frame = CGRectMake(0, 76, width, 20);
-    offButton.frame = CGRectMake(width, 76, width, 20);
+    onButton.frame = CGRectMake(0, 10, width, 20);
+    offButton.frame = CGRectMake(width, 10, width, 20);
     
     [self.view addSubview:onButton];
     [self.view addSubview:offButton];

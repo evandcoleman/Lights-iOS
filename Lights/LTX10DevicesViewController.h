@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LTX10ViewController : UIViewController
+@interface LTX10DevicesViewController : UIViewController
 
 @end

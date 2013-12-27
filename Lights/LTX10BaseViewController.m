@@ -6,34 +6,34 @@
 //  Copyright (c) 2013 Evan Coleman. All rights reserved.
 //
 
-#import "LTColorBaseViewController.h"
+#import "LTX10BaseViewController.h"
 #import "LTAppDelegate.h"
-#import "LTColorWheelViewController.h"
-#import "LTColorAnimateViewController.h"
-#import "LTColorSwatchesViewController.h"
+#import "LTX10DevicesViewController.h"
+#import "LTX10RoomsViewController.h"
+#import "LTX10PresetsViewController.h"
 
-@interface LTColorBaseViewController ()
+@interface LTX10BaseViewController ()
 
 @property (nonatomic) UISegmentedControl *segmentedControl;
 
 @property (nonatomic, readonly) LKSession *session;
 
 @property (nonatomic) UIViewController *currentViewController;
-@property (nonatomic) LTColorWheelViewController *colorWheelViewController;
-@property (nonatomic) LTColorAnimateViewController *colorAnimationViewController;
-@property (nonatomic) LTColorSwatchesViewController *colorSwatchesViewController;
+@property (nonatomic) LTX10DevicesViewController *devicesViewController;
+@property (nonatomic) LTX10RoomsViewController *roomsViewController;
+@property (nonatomic) LTX10PresetsViewController *presetsViewController;
 
 @end
 
-@implementation LTColorBaseViewController
+@implementation LTX10BaseViewController
 
 - (id)init {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
-        self.title = NSLocalizedString(@"Colors", @"Colors");
-        self.tabBarItem.image = [UIImage imageNamed:@"flower"];
+        self.title = NSLocalizedString(@"Home", @"Home");
+        self.tabBarItem.image = [UIImage imageNamed:@"house"];
         
-        _segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"Colors", @"Wheel", @"Animate"]];
+        _segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"Rooms", @"Presets", @"Devices"]];
     }
     return self;
 }
@@ -61,25 +61,25 @@
 
 #pragma mark - Getters
 
-- (LTColorWheelViewController *)colorWheelViewController {
-    if (_colorWheelViewController == nil) {
-        _colorWheelViewController = [[LTColorWheelViewController alloc] init];
+- (LTX10RoomsViewController *)roomsViewController {
+    if (_roomsViewController == nil) {
+        _roomsViewController = [[LTX10RoomsViewController alloc] init];
     }
-    return _colorWheelViewController;
+    return _roomsViewController;
 }
 
-- (LTColorAnimateViewController *)colorAnimationViewController {
-    if (_colorAnimationViewController == nil) {
-        _colorAnimationViewController = [[LTColorAnimateViewController alloc] init];
+- (LTX10PresetsViewController *)presetsViewController {
+    if (_presetsViewController == nil) {
+        _presetsViewController = [[LTX10PresetsViewController alloc] init];
     }
-    return _colorAnimationViewController;
+    return _presetsViewController;
 }
 
-- (LTColorSwatchesViewController *)colorSwatchesViewController {
-    if (_colorSwatchesViewController == nil) {
-        _colorSwatchesViewController = [[LTColorSwatchesViewController alloc] init];
+- (LTX10DevicesViewController *)devicesViewController {
+    if (_devicesViewController == nil) {
+        _devicesViewController = [[LTX10DevicesViewController alloc] init];
     }
-    return _colorSwatchesViewController;
+    return _devicesViewController;
 }
 
 #pragma mark - Child View Swapping
@@ -88,13 +88,13 @@
     UIViewController *toViewController = nil;
     switch (self.segmentedControl.selectedSegmentIndex) {
         case 0:
-            toViewController = self.colorSwatchesViewController;
+            toViewController = self.roomsViewController;
             break;
         case 1:
-            toViewController = self.colorWheelViewController;
+            toViewController = self.presetsViewController;
             break;
         case 2:
-            toViewController = self.colorAnimationViewController;
+            toViewController = self.devicesViewController;
             break;
         default:
             break;
@@ -113,8 +113,8 @@
     [fromViewController removeFromParentViewController];
     [self addChildViewController:toViewController];
     
-    toViewController.view.frame = self.view.bounds;
-
+    toViewController.view.frame = self.view.bounds;//CGRectMake(0, 64, CGRectGetWidth([[UIScreen mainScreen] bounds]), CGRectGetHeight([[UIScreen mainScreen] bounds]) - 64);
+    
     [self.view addSubview:toViewController.view];
     toViewController.view.userInteractionEnabled = YES;
     

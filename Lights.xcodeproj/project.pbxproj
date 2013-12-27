@@ -10,6 +10,9 @@
 		201B38AF1859684900921132 /* LTColorWheelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 201B38AE1859684900921132 /* LTColorWheelViewController.m */; };
 		201DA55D184EC5D00061E8C3 /* LTPanningTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 201DA55C184EC5D00061E8C3 /* LTPanningTableViewCell.m */; };
 		201DA560184ED6A80061E8C3 /* LTInnerShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 201DA55F184ED6A80061E8C3 /* LTInnerShadowView.m */; };
+		2020034F186D3872008678EA /* LTX10BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2020034E186D3872008678EA /* LTX10BaseViewController.m */; };
+		20200352186D394A008678EA /* LTX10RoomsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20200351186D394A008678EA /* LTX10RoomsViewController.m */; };
+		20200355186D3956008678EA /* LTX10PresetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20200354186D3956008678EA /* LTX10PresetsViewController.m */; };
 		2024351F1845926A00DD8EC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2024351E1845926A00DD8EC1 /* Foundation.framework */; };
 		202435211845926A00DD8EC1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202435201845926A00DD8EC1 /* CoreGraphics.framework */; };
 		202435231845926A00DD8EC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202435221845926A00DD8EC1 /* UIKit.framework */; };
@@ -21,7 +24,7 @@
 		202435461845926A00DD8EC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202435221845926A00DD8EC1 /* UIKit.framework */; };
 		2024354E1845926A00DD8EC1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2024354C1845926A00DD8EC1 /* InfoPlist.strings */; };
 		202435501845926A00DD8EC1 /* LightsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2024354F1845926A00DD8EC1 /* LightsTests.m */; };
-		2024355B1845937A00DD8EC1 /* LTX10ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2024355A1845937A00DD8EC1 /* LTX10ViewController.m */; };
+		2024355B1845937A00DD8EC1 /* LTX10DevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2024355A1845937A00DD8EC1 /* LTX10DevicesViewController.m */; };
 		2024355E1845952D00DD8EC1 /* LTLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2024355D1845952D00DD8EC1 /* LTLoadingViewController.m */; };
 		202435701845961100DD8EC1 /* dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 202435601845961100DD8EC1 /* dark.png */; };
 		202435711845961100DD8EC1 /* dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 202435611845961100DD8EC1 /* dark@2x.png */; };
@@ -67,6 +70,7 @@
 		20B4096D18466A1500F0016A /* LTColorBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B4096C18466A1500F0016A /* LTColorBaseViewController.m */; };
 		20B716801862ADA2002AA564 /* LTEventAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B7167F1862ADA2002AA564 /* LTEventAddViewController.m */; };
 		20B716841862AFA3002AA564 /* LTGroupedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B716831862AFA3002AA564 /* LTGroupedTableViewController.m */; };
+		20C27AD3186E18BE002E6163 /* LTRoomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C27AD2186E18BE002E6163 /* LTRoomCell.m */; };
 		20C533FF1862B25000E2FF7E /* LTScheduleAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C533FE1862B25000E2FF7E /* LTScheduleAddViewController.m */; };
 		20C534031862B9C400E2FF7E /* LTDatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C534021862B9C400E2FF7E /* LTDatePickerCell.m */; };
 		41A7A9EBE8784F9194B187BE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D0E8E36EC0F4B32AA11387D /* libPods.a */; };
@@ -89,6 +93,12 @@
 		201DA55C184EC5D00061E8C3 /* LTPanningTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTPanningTableViewCell.m; sourceTree = "<group>"; };
 		201DA55E184ED6A80061E8C3 /* LTInnerShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTInnerShadowView.h; sourceTree = "<group>"; };
 		201DA55F184ED6A80061E8C3 /* LTInnerShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTInnerShadowView.m; sourceTree = "<group>"; };
+		2020034D186D3872008678EA /* LTX10BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTX10BaseViewController.h; sourceTree = "<group>"; };
+		2020034E186D3872008678EA /* LTX10BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTX10BaseViewController.m; sourceTree = "<group>"; };
+		20200350186D394A008678EA /* LTX10RoomsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTX10RoomsViewController.h; sourceTree = "<group>"; };
+		20200351186D394A008678EA /* LTX10RoomsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTX10RoomsViewController.m; sourceTree = "<group>"; };
+		20200353186D3956008678EA /* LTX10PresetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTX10PresetsViewController.h; sourceTree = "<group>"; };
+		20200354186D3956008678EA /* LTX10PresetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTX10PresetsViewController.m; sourceTree = "<group>"; };
 		2024351B1845926A00DD8EC1 /* Lights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lights.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2024351E1845926A00DD8EC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		202435201845926A00DD8EC1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -104,8 +114,8 @@
 		2024354B1845926A00DD8EC1 /* LightsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LightsTests-Info.plist"; sourceTree = "<group>"; };
 		2024354D1845926A00DD8EC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2024354F1845926A00DD8EC1 /* LightsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LightsTests.m; sourceTree = "<group>"; };
-		202435591845937A00DD8EC1 /* LTX10ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTX10ViewController.h; sourceTree = "<group>"; };
-		2024355A1845937A00DD8EC1 /* LTX10ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTX10ViewController.m; sourceTree = "<group>"; };
+		202435591845937A00DD8EC1 /* LTX10DevicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTX10DevicesViewController.h; sourceTree = "<group>"; };
+		2024355A1845937A00DD8EC1 /* LTX10DevicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTX10DevicesViewController.m; sourceTree = "<group>"; };
 		2024355C1845952D00DD8EC1 /* LTLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTLoadingViewController.h; sourceTree = "<group>"; };
 		2024355D1845952D00DD8EC1 /* LTLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTLoadingViewController.m; sourceTree = "<group>"; };
 		202435601845961100DD8EC1 /* dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dark.png; sourceTree = "<group>"; };
@@ -173,6 +183,8 @@
 		20B7167F1862ADA2002AA564 /* LTEventAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTEventAddViewController.m; sourceTree = "<group>"; };
 		20B716821862AFA3002AA564 /* LTGroupedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTGroupedTableViewController.h; sourceTree = "<group>"; };
 		20B716831862AFA3002AA564 /* LTGroupedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTGroupedTableViewController.m; sourceTree = "<group>"; };
+		20C27AD1186E18BE002E6163 /* LTRoomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTRoomCell.h; sourceTree = "<group>"; };
+		20C27AD2186E18BE002E6163 /* LTRoomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTRoomCell.m; sourceTree = "<group>"; };
 		20C533FD1862B25000E2FF7E /* LTScheduleAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTScheduleAddViewController.h; sourceTree = "<group>"; };
 		20C533FE1862B25000E2FF7E /* LTScheduleAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTScheduleAddViewController.m; sourceTree = "<group>"; };
 		20C534011862B9C400E2FF7E /* LTDatePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTDatePickerCell.h; sourceTree = "<group>"; };
@@ -209,6 +221,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2020034C186D3804008678EA /* X10 */ = {
+			isa = PBXGroup;
+			children = (
+				2020034D186D3872008678EA /* LTX10BaseViewController.h */,
+				2020034E186D3872008678EA /* LTX10BaseViewController.m */,
+				202435591845937A00DD8EC1 /* LTX10DevicesViewController.h */,
+				2024355A1845937A00DD8EC1 /* LTX10DevicesViewController.m */,
+				20200350186D394A008678EA /* LTX10RoomsViewController.h */,
+				20200351186D394A008678EA /* LTX10RoomsViewController.m */,
+				20200353186D3956008678EA /* LTX10PresetsViewController.h */,
+				20200354186D3956008678EA /* LTX10PresetsViewController.m */,
+			);
+			name = X10;
+			sourceTree = "<group>";
+		};
 		202435121845926A00DD8EC1 = {
 			isa = PBXGroup;
 			children = (
@@ -357,14 +384,13 @@
 		20B7167A1862AD3A002AA564 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2020034C186D3804008678EA /* X10 */,
 				20B7167D1862AD7E002AA564 /* Colors */,
 				20B716811862AF27002AA564 /* Schedule */,
 				20B7167E1862ADA2002AA564 /* LTEventAddViewController.h */,
 				20B7167F1862ADA2002AA564 /* LTEventAddViewController.m */,
 				2024355C1845952D00DD8EC1 /* LTLoadingViewController.h */,
 				2024355D1845952D00DD8EC1 /* LTLoadingViewController.m */,
-				202435591845937A00DD8EC1 /* LTX10ViewController.h */,
-				2024355A1845937A00DD8EC1 /* LTX10ViewController.m */,
 				20B40968184664BE00F0016A /* LTSettingsViewController.h */,
 				20B40969184664BE00F0016A /* LTSettingsViewController.m */,
 				20B716821862AFA3002AA564 /* LTGroupedTableViewController.h */,
@@ -420,6 +446,8 @@
 				20329D8F185CF4FE0082D958 /* LTScheduleCell.m */,
 				20C534011862B9C400E2FF7E /* LTDatePickerCell.h */,
 				20C534021862B9C400E2FF7E /* LTDatePickerCell.m */,
+				20C27AD1186E18BE002E6163 /* LTRoomCell.h */,
+				20C27AD2186E18BE002E6163 /* LTRoomCell.m */,
 			);
 			name = "Table View Cells";
 			sourceTree = "<group>";
@@ -581,6 +609,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20C27AD3186E18BE002E6163 /* LTRoomCell.m in Sources */,
 				20B716841862AFA3002AA564 /* LTGroupedTableViewController.m in Sources */,
 				20709969185AB1AA004B9898 /* HSV.c in Sources */,
 				2070996D185AB1AA004B9898 /* KZColorPickerBrightnessSlider.m in Sources */,
@@ -588,6 +617,7 @@
 				20329D90185CF4FE0082D958 /* LTScheduleCell.m in Sources */,
 				20709970185AB1AA004B9898 /* KZUnitSlider.m in Sources */,
 				2070996E185AB1AA004B9898 /* KZColorPickerHSWheel.m in Sources */,
+				20200355186D3956008678EA /* LTX10PresetsViewController.m in Sources */,
 				20709973185AB1AA004B9898 /* UIColor-Expanded.m in Sources */,
 				20C534031862B9C400E2FF7E /* LTDatePickerCell.m in Sources */,
 				20B716801862ADA2002AA564 /* LTEventAddViewController.m in Sources */,
@@ -601,13 +631,15 @@
 				2070996B185AB1AA004B9898 /* KZColorPicker.m in Sources */,
 				20C533FF1862B25000E2FF7E /* LTScheduleAddViewController.m in Sources */,
 				202435821845A4AD00DD8EC1 /* LTTableDrawerView.m in Sources */,
+				20200352186D394A008678EA /* LTX10RoomsViewController.m in Sources */,
 				2070997C185ABC8D004B9898 /* LTColorAnimateViewController.m in Sources */,
 				2024355E1845952D00DD8EC1 /* LTLoadingViewController.m in Sources */,
 				20B4096A184664BE00F0016A /* LTSettingsViewController.m in Sources */,
 				2070996A185AB1AA004B9898 /* KZColorCompareView.m in Sources */,
 				20709983185ACC3B004B9898 /* LTColorSwatchesViewController.m in Sources */,
-				2024355B1845937A00DD8EC1 /* LTX10ViewController.m in Sources */,
+				2024355B1845937A00DD8EC1 /* LTX10DevicesViewController.m in Sources */,
 				2024352B1845926A00DD8EC1 /* main.m in Sources */,
+				2020034F186D3872008678EA /* LTX10BaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

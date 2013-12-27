@@ -7,7 +7,7 @@
 //
 
 #import "LTAppDelegate.h"
-#import "LTX10ViewController.h"
+#import "LTX10BaseViewController.h"
 #import "LTSettingsViewController.h"
 #import "LTColorBaseViewController.h"
 #import "LTScheduleTableViewController.h"
@@ -73,7 +73,7 @@
 - (void)setupTabBarControllerWithColors:(BOOL)colors {
     NSMutableArray *vcs = [NSMutableArray array];
     
-    UINavigationController *x10ViewController = [[UINavigationController alloc] initWithRootViewController:[[LTX10ViewController alloc] init]];
+    UINavigationController *x10ViewController = [[UINavigationController alloc] initWithRootViewController:[[LTX10BaseViewController alloc] init]];
     x10ViewController.tabBarItem.image = [UIImage imageNamed:@"house"];
     x10ViewController.title = @"Home";
     [vcs addObject:x10ViewController];
