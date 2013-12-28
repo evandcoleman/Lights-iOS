@@ -28,16 +28,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    [self.session queryPresetsWithBlock:^(NSArray *presets) {
-        self.presets = presets;
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
-    }];
+    
+    self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self setRefreshControl:refreshControl];
+    
+    [refreshControl beginRefreshing];
+    [self refresh:refreshControl];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Interface actions
+
+- (void)refresh:(id)sender {
+    [self.session queryPresetsWithBlock:^(NSArray *presets) {
+        self.presets = presets;
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+        [(UIRefreshControl *)sender endRefreshing];
+    }];
 }
 
 #pragma mark - Table view data source

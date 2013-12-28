@@ -30,11 +30,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self setRefreshControl:refreshControl];
 
-    [self.session queryRoomsWithBlock:^(NSArray *rooms) {
-        self.rooms = rooms;
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
-    }];
+    [refreshControl beginRefreshing];
+    [self refresh:refreshControl];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,6 +44,14 @@
 }
 
 #pragma mark - Interface actions
+
+- (void)refresh:(id)sender {
+    [self.session queryRoomsWithBlock:^(NSArray *rooms) {
+        self.rooms = rooms;
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+        [(UIRefreshControl *)sender endRefreshing];
+    }];
+}
 
 - (void)roomOn:(UIControl *)sender {
     LKRoom *room = self.rooms[sender.tag];

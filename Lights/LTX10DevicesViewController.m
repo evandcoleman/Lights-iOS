@@ -35,36 +35,38 @@
     [super viewDidLoad];
 	
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationController.tabBarItem.image = [UIImage imageNamed:@"house"];
-    self.title = @"Home";
     
     UIButton *onButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     UIButton *offButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.frame = CGRectMake(0, 34, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 150);
+    self.tableView.frame = CGRectMake(0, 100, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 150);
     
     [onButton setTitle:@"All On" forState:UIControlStateNormal];
     [offButton setTitle:@"All Off" forState:UIControlStateNormal];
     [onButton addTarget:self action:@selector(allOn:) forControlEvents:UIControlEventTouchUpInside];
     [offButton addTarget:self action:@selector(allOff:) forControlEvents:UIControlEventTouchUpInside];
     CGFloat width = CGRectGetWidth(self.view.frame) / 2;
-    onButton.frame = CGRectMake(0, 10, width, 20);
-    offButton.frame = CGRectMake(width, 10, width, 20);
+    onButton.frame = CGRectMake(0, 74, width, 20);
+    offButton.frame = CGRectMake(width, 74, width, 20);
     
     [self.view addSubview:onButton];
     [self.view addSubview:offButton];
     [self.view addSubview:self.tableView];
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl];
+    
+    [refreshControl beginRefreshing];
+    [self refresh:refreshControl];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self.session queryX10DevicesWithBlock:^(NSArray *devices) {
-        self.devices = devices;
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
-    }];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -75,6 +77,14 @@
 }
 
 #pragma mark - Interface actions
+
+- (void)refresh:(id)sender {
+    [self.session queryX10DevicesWithBlock:^(NSArray *devices) {
+        self.devices = devices;
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+        [(UIRefreshControl *)sender endRefreshing];
+    }];
+}
 
 - (void)allOn:(id)sender {
     LKEventCollection *collection = [LKEventCollection collectionWithDevices:self.devices command:LKX10CommandOn];
