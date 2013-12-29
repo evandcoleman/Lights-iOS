@@ -14,8 +14,10 @@
 #import <BlocksKit/UIAlertView+BlocksKit.h>
 #import <SSKeychain/SSKeychain.h>
 
-#define kDefaultServerURL @"http://example.com"
-#define kServiceName @"lights-app"
+//#define kDefaultServerURL @"http://example.com"
+//#define kServiceName @"lights-app"
+#define kDefaultServerURL @"http://lights.edc.me"
+#define kServiceName @"edc-lights"
 
 @interface LTAppDelegate ()
 
