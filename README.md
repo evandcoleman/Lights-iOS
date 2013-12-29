@@ -4,7 +4,7 @@ Lights-iOS is an iOS app built on top of my [LightsKit](https://github.com/edc15
 
 ## Links
 
-* Documentation: <http://edc.me/lights/documentation.html>
+* Documentation: <https://github.com/edc1591/lights-rails/wiki>
 * Lights-rails app: <https://github.com/edc1591/lights-rails>
 * Lights bridge apps: <https://github.com/edc1591/lights-bridge>
 
