@@ -15,6 +15,9 @@
 @property (nonatomic) UIButton *dimButton;
 @property (nonatomic) UIButton *brightButton;
 
+@property (nonatomic) NSTimer *timer;
+@property (nonatomic) NSUInteger timerFires;
+
 @end
 
 @implementation LTTableDrawerView
@@ -37,8 +40,10 @@
         
         [self.onButton addTarget:self action:@selector(on) forControlEvents:UIControlEventTouchUpInside];
         [self.offButton addTarget:self action:@selector(off) forControlEvents:UIControlEventTouchUpInside];
-        [self.dimButton addTarget:self action:@selector(dim) forControlEvents:UIControlEventTouchUpInside];
-        [self.brightButton addTarget:self action:@selector(bright) forControlEvents:UIControlEventTouchUpInside];
+        [self.dimButton addTarget:self action:@selector(dimTouchBegin) forControlEvents:UIControlEventTouchDown];
+        [self.dimButton addTarget:self action:@selector(touchEnd) forControlEvents:UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
+        [self.brightButton addTarget:self action:@selector(brightTouchBegin) forControlEvents:UIControlEventTouchDown];
+        [self.brightButton addTarget:self action:@selector(touchEnd) forControlEvents:UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
         
         [self addSubview:self.onButton];
         [self addSubview:self.offButton];
@@ -77,11 +82,35 @@
 }
 
 - (void)dim {
+    self.timerFires++;
     self.onTapButton(self, LKX10CommandDim);
 }
 
 - (void)bright {
+    self.timerFires++;
     self.onTapButton(self, LKX10CommandBright);
+}
+
+- (void)dimTouchBegin {
+    self.timerFires = 0;
+    [self on];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(dim) userInfo:nil repeats:YES];
+}
+
+- (void)brightTouchBegin {
+    self.timerFires = 0;
+    [self on];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(bright) userInfo:nil repeats:YES];
+}
+
+- (void)touchEnd {
+    if (self.timerFires == 0) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [self.timer invalidate];
+        });
+    } else {
+        [self.timer invalidate];
+    }
 }
 
 @end
