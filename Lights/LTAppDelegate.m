@@ -74,6 +74,16 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSString *token = [deviceToken description];
+    
+    [self.session registerDeviceToken:token completion:NULL];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"Error: %@", error);
+}
+
 - (void)setupTabBarControllerWithColors:(BOOL)colors {
     NSMutableArray *vcs = [NSMutableArray array];
     
@@ -170,6 +180,8 @@
     [self.session openSessionWithUsername:username password:password completion:^(NSDictionary *userDict){
         [self setupTabBarControllerWithColors:(userDict[@"color_zones"] != (id)[NSNull null])];
         [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
+        
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
     }];
 }
 
