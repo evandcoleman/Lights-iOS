@@ -11,6 +11,7 @@
 #import "LTSettingsViewController.h"
 #import "LTColorBaseViewController.h"
 #import "LTScheduleTableViewController.h"
+#import "LTBeaconManager.h"
 #import <BlocksKit/UIAlertView+BlocksKit.h>
 #import <SSKeychain/SSKeychain.h>
 
@@ -168,6 +169,8 @@
     [self.session openSessionWithUsername:username password:password completion:^(NSDictionary *userDict){
         [self setupTabBarControllerWithColors:(userDict[@"color_zones"] != (id)[NSNull null])];
         [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
+        
+        [[LTBeaconManager sharedManager] beginTracking];
     }];
 }
 
