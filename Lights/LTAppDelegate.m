@@ -13,11 +13,11 @@
 #import "LTScheduleTableViewController.h"
 #import <BlocksKit/UIAlertView+BlocksKit.h>
 #import <SSKeychain/SSKeychain.h>
+#import <HockeySDK/HockeySDK.h>
 
-//#define kDefaultServerURL @"http://example.com"
-//#define kServiceName @"lights-app"
-#define kDefaultServerURL @"http://lights.edc.me"
-#define kServiceName @"edc-lights"
+#define kDefaultServerURL @"http://example.com"
+#define kServiceName @"lights-app"
+#define kHockeyAppId @""
 
 @interface LTAppDelegate ()
 
@@ -26,7 +26,9 @@
 @implementation LTAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [TestFlight takeOff:@"4d76814c-d4ac-4fe7-933b-f0ed44b4c787"];
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:kHockeyAppId];
+    [[BITHockeyManager sharedHockeyManager] startManager];
+    [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
