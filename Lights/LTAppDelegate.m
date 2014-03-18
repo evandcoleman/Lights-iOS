@@ -15,9 +15,9 @@
 #import <SSKeychain/SSKeychain.h>
 #import <HockeySDK/HockeySDK.h>
 
-#define kDefaultServerURL @"http://example.com"
-#define kServiceName @"lights-app"
-#define kHockeyAppId @""
+#define kDefaultServerURL @"http://lights.edc.me"
+#define kServiceName @"edc-lights"
+#define kHockeyAppId @"3d3db41a2aa5421bca8ee2ed8fca2c61"
 
 @interface LTAppDelegate ()
 
