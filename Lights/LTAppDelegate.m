@@ -30,6 +30,8 @@
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
     
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     self.tabBarController = [[UITabBarController alloc] init];
@@ -59,6 +61,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     [self.tabBarController presentViewController:self.loadingViewController animated:NO completion:NULL];
     [self.session resumeSessionWithCompletion:^{
         [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
