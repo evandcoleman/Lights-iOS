@@ -14,11 +14,11 @@
 #import "LTBeaconManager.h"
 #import <BlocksKit/UIAlertView+BlocksKit.h>
 #import <SSKeychain/SSKeychain.h>
+#import <HockeySDK/HockeySDK.h>
 
-//#define kDefaultServerURL @"http://example.com"
-//#define kServiceName @"lights-app"
-#define kDefaultServerURL @"http://lights.edc.me"
-#define kServiceName @"edc-lights"
+#define kDefaultServerURL @""
+#define kServiceName @""
+#define kHockeyAppId @""
 
 @interface LTAppDelegate ()
 
@@ -27,7 +27,11 @@
 @implementation LTAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [TestFlight takeOff:@"4d76814c-d4ac-4fe7-933b-f0ed44b4c787"];
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:kHockeyAppId];
+    [[BITHockeyManager sharedHockeyManager] startManager];
+    [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
+    
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
@@ -58,6 +62,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     [self.tabBarController presentViewController:self.loadingViewController animated:NO completion:NULL];
     [self.session resumeSessionWithCompletion:^{
         [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
@@ -71,6 +76,16 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSString *token = [deviceToken description];
+    
+    [self.session registerDeviceToken:token completion:NULL];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"Error: %@", error);
 }
 
 - (void)setupTabBarControllerWithColors:(BOOL)colors {
@@ -170,6 +185,7 @@
         [self setupTabBarControllerWithColors:(userDict[@"color_zones"] != (id)[NSNull null])];
         [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
         
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
         [[LTBeaconManager sharedManager] beginTracking];
     }];
 }
