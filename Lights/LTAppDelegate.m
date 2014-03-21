@@ -92,7 +92,7 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-    if ([self beaconsOn]) {
+    if ([self beaconsOn] && [[UIApplication sharedApplication] applicationState] != UIApplicationStateActive) {
         [[LTBeaconManager sharedManager] triggerActionWithNotification:notification];
     }
 }
