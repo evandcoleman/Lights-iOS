@@ -22,6 +22,8 @@
 
 @interface LTAppDelegate ()
 
+@property (nonatomic) NSDictionary *launchOptions;
+
 @end
 
 @implementation LTAppDelegate
@@ -33,6 +35,7 @@
     
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     
+    self.launchOptions = launchOptions;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     self.tabBarController = [[UITabBarController alloc] init];
@@ -86,6 +89,12 @@
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSLog(@"Error: %@", error);
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    if ([self beaconsOn]) {
+        [[LTBeaconManager sharedManager] triggerActionWithNotification:notification];
+    }
 }
 
 - (void)setupTabBarControllerWithColors:(BOOL)colors {
@@ -180,18 +189,29 @@
 }
 
 - (void)openSessionWithUsername:(NSString *)username andPassword:(NSString *)password {
-    self.session = [[LKSession alloc] initWithServer:[NSURL URLWithString:[self serverURL]]];
+    self.session = [[LKSession alloc] initWithBaseURL:[NSURL URLWithString:[self serverURL]]];
     [self.session openSessionWithUsername:username password:password completion:^(NSDictionary *userDict){
         [self setupTabBarControllerWithColors:(userDict[@"color_zones"] != (id)[NSNull null])];
         [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
         
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
         
-        NSNumber *beaconsOn = [[NSUserDefaults standardUserDefaults] objectForKey:@"LTBeacons"];
-        if ([beaconsOn boolValue] || !beaconsOn) {
+        if ([self beaconsOn]) {
             [[LTBeaconManager sharedManager] beginTracking];
         }
+        
+        UILocalNotification *launchNote = [self.launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+        if (launchNote && [self beaconsOn]){
+            [[LTBeaconManager sharedManager] triggerActionWithNotification:launchNote];
+        }
     }];
+}
+
+#pragma mark - Helpers
+
+- (BOOL)beaconsOn {
+    NSNumber *beaconsOn = [[NSUserDefaults standardUserDefaults] objectForKey:@"LTBeacons"];
+    return ([beaconsOn boolValue] || !beaconsOn);
 }
 
 @end

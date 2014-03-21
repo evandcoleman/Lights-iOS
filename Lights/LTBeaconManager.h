@@ -14,4 +14,6 @@
 - (void)beginTracking;
 - (void)stopTracking;
 
+- (void)triggerActionWithNotification:(UILocalNotification *)note;
+
 @end

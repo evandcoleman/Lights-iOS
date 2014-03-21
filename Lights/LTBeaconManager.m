@@ -68,6 +68,30 @@ static NSString * const LTBeaconLastNotificationKey = @"LTBeaconLastNotification
     [self cleanUp];
 }
 
+- (void)triggerActionWithNotification:(UILocalNotification *)note {
+    NSDictionary *dict = nil;
+    for (NSDictionary *d in self.beacons) {
+        if (d[LTBeaconLastNotificationKey] == note) {
+            dict = d;
+            break;
+        }
+    }
+    
+    if (dict) {
+        LKBeacon *beacon = dict[LTBeaconKey];
+        NSString *path = [NSString stringWithFormat:@"api/v1/rooms/%ld/1", (long)beacon.roomId];
+        [[LKSession activeSession] PUT:path
+                            parameters:@{@"auth_token": [[LKSession activeSession] authToken]}
+                               success:^(NSURLSessionDataTask *taks, id responseObject) {
+                                   NSLog(@"PUT to %@", path);
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            NSLog(@"%@", [error localizedDescription]);
+        }];
+    }
+}
+
+#pragma mark - Private methods
+
 - (void)setupBeacons {
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
@@ -80,6 +104,7 @@ static NSString * const LTBeaconLastNotificationKey = @"LTBeaconLastNotification
         dict[LTBeaconRegionKey] = beaconRegion;
         
         [self.locationManager startMonitoringForRegion:beaconRegion];
+        NSLog(@"Tracking beacon in %@", beacon.name);
     }
 }
 
