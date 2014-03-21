@@ -69,24 +69,15 @@ static NSString * const LTBeaconLastNotificationKey = @"LTBeaconLastNotification
 }
 
 - (void)triggerActionWithNotification:(UILocalNotification *)note {
-    NSDictionary *dict = nil;
-    for (NSDictionary *d in self.beacons) {
-        if (d[LTBeaconLastNotificationKey] == note) {
-            dict = d;
-            break;
-        }
-    }
-    
-    if (dict) {
-        LKBeacon *beacon = dict[LTBeaconKey];
-        NSString *path = [NSString stringWithFormat:@"api/v1/rooms/%ld/1", (long)beacon.roomId];
+    if (note.userInfo[@"roomId"]) {
+        NSString *path = [NSString stringWithFormat:@"api/v1/rooms/%@/1", note.userInfo[@"roomId"]];
         [[LKSession activeSession] PUT:path
                             parameters:@{@"auth_token": [[LKSession activeSession] authToken]}
                                success:^(NSURLSessionDataTask *taks, id responseObject) {
                                    NSLog(@"PUT to %@", path);
-        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            NSLog(@"%@", [error localizedDescription]);
-        }];
+                               } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                   NSLog(@"%@", [error localizedDescription]);
+                               }];
     }
 }
 
@@ -135,6 +126,7 @@ static NSString * const LTBeaconLastNotificationKey = @"LTBeaconLastNotification
         
         UILocalNotification *notification = [[UILocalNotification alloc] init];
         notification.alertBody = [NSString stringWithFormat:@"Entered %@. Slide to turn on the lights \uE10F", beacon.name];
+        notification.userInfo = @{@"roomId": @(beacon.roomId)};
         [[UIApplication sharedApplication] scheduleLocalNotification:notification];
         dict[LTBeaconLastNotificationKey] = notification;
     } else {
