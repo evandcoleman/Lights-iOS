@@ -8,6 +8,7 @@
 
 #import "LTBeaconsViewController.h"
 #import "LTAppDelegate.h"
+#import <BlocksKit/UIBarButtonItem+BlocksKit.h>
 
 @interface LTBeaconsViewController ()
 
@@ -35,6 +36,11 @@
     
     [refreshControl beginRefreshing];
     [self refresh:refreshControl];
+    
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] bk_initWithBarButtonSystemItem:UIBarButtonSystemItemDone handler:^(id sender) {
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }];
+    self.navigationItem.rightBarButtonItem = doneButton;
 }
 
 #pragma mark - Interface actions
