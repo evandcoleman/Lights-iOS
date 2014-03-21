@@ -186,7 +186,11 @@
         [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
         
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
-        [[LTBeaconManager sharedManager] beginTracking];
+        
+        NSNumber *beaconsOn = [[NSUserDefaults standardUserDefaults] objectForKey:@"LTBeacons"];
+        if ([beaconsOn boolValue] || !beaconsOn) {
+            [[LTBeaconManager sharedManager] beginTracking];
+        }
     }];
 }
 

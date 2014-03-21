@@ -12,5 +12,6 @@
 
 + (instancetype)sharedManager;
 - (void)beginTracking;
+- (void)stopTracking;
 
 @end

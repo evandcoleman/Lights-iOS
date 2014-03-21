@@ -64,6 +64,10 @@ static NSString * const LTBeaconLastNotificationKey = @"LTBeaconLastNotification
     }
 }
 
+- (void)stopTracking {
+    [self cleanUp];
+}
+
 - (void)setupBeacons {
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;

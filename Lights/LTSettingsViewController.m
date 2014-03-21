@@ -10,6 +10,7 @@
 #import "LTAppDelegate.h"
 #import "LTLoadingViewController.h"
 #import "LTBeaconsViewController.h"
+#import "LTBeaconManager.h"
 #import <BlocksKit/UIAlertView+BlocksKit.h>
 #import <SSKeychain/SSKeychain.h>
 
@@ -41,9 +42,12 @@
     UIButton *toggleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     UIButton *reconnectButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     UIButton *beaconsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UISwitch *beaconSwitch = [[UISwitch alloc] init];
     reconnectButton.frame = CGRectMake(width/4, CGRectGetMaxY(self.serverField.frame) + 10, width/2, 20);
     toggleButton.frame = CGRectMake(width/4, CGRectGetMaxY(reconnectButton.frame) + 10, width/2, 20);
     beaconsButton.frame = CGRectMake(width/4, CGRectGetMaxY(self.view.frame) - 160, width/2, 20);
+    beaconSwitch.center = beaconsButton.center;
+    beaconSwitch.frame = CGRectMake(CGRectGetMinX(beaconSwitch.frame), CGRectGetMinY(beaconSwitch.frame) + 36, 0, 0);
     
     self.serverField.placeholder = @"Enter Server Address";
     self.serverField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"LTServerKey"];
@@ -53,11 +57,15 @@
     [toggleButton addTarget:self action:@selector(toggle) forControlEvents:UIControlEventTouchUpInside];
     [beaconsButton setTitle:@"Beacons" forState:UIControlStateNormal];
     [beaconsButton addTarget:self action:@selector(beacons) forControlEvents:UIControlEventTouchUpInside];
+    [beaconSwitch addTarget:self action:@selector(toggleBeacons:) forControlEvents:UIControlEventValueChanged];
+    NSNumber *beaconsOn = [[NSUserDefaults standardUserDefaults] objectForKey:@"LTBeacons"];
+    beaconSwitch.on = beaconsOn ? [beaconsOn boolValue] : YES;
     
     [self.view addSubview:self.serverField];
     [self.view addSubview:reconnectButton];
     [self.view addSubview:toggleButton];
     [self.view addSubview:beaconsButton];
+    [self.view addSubview:beaconSwitch];
 }
 
 - (void)toggle {
@@ -80,6 +88,16 @@
     LTBeaconsViewController *vc = [[LTBeaconsViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     [self presentViewController:nav animated:YES completion:NULL];
+}
+
+- (void)toggleBeacons:(UISwitch *)sender {
+    [[NSUserDefaults standardUserDefaults] setBool:sender.on forKey:@"LTBeacons"];
+    
+    if (sender.on) {
+        [[LTBeaconManager sharedManager] beginTracking];
+    } else {
+        [[LTBeaconManager sharedManager] stopTracking];
+    }
 }
 
 @end
