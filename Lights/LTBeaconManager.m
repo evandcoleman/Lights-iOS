@@ -95,7 +95,7 @@ static NSString * const LTBeaconLastNotificationKey = @"LTBeaconLastNotification
         dict[LTBeaconRegionKey] = beaconRegion;
         
         [self.locationManager startMonitoringForRegion:beaconRegion];
-        NSLog(@"Tracking beacon in %@", beacon.name);
+        NSLog(@"Tracking beacon in %@. Major: %lu, Minor: %lu", beacon.name, (long)beacon.major, (long)beacon.minor);
     }
 }
 
