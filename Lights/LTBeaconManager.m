@@ -87,6 +87,10 @@ static NSString * const LTBeaconLastNotificationKey = @"LTBeaconLastNotification
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     
+    for (CLRegion *region in self.locationManager.monitoredRegions) {
+        [self.locationManager stopMonitoringForRegion:region];
+    }
+    
     NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:LTBeaconUUID];
     NSString *identifierPrefix = @"net.evancoleman.lights";
     for (NSMutableDictionary *dict in self.beacons) {
