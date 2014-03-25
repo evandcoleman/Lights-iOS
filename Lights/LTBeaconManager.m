@@ -88,9 +88,10 @@ static NSString * const LTBeaconLastNotificationKey = @"LTBeaconLastNotification
     self.locationManager.delegate = self;
     
     NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:LTBeaconUUID];
-    NSString *identifier = @"net.evancoleman.lights";
+    NSString *identifierPrefix = @"net.evancoleman.lights";
     for (NSMutableDictionary *dict in self.beacons) {
         LKBeacon *beacon = dict[LTBeaconKey];
+        NSString *identifier = [identifierPrefix stringByAppendingFormat:@".%lu", (long)beacon.beaconId];
         CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid major:beacon.major minor:beacon.minor identifier:identifier];
         dict[LTBeaconRegionKey] = beaconRegion;
         

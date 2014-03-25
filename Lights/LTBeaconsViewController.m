@@ -47,12 +47,13 @@ static NSString * const LTBeaconRegionKey = @"LTBeaconRegionKey";
     
     self.locationManager.delegate = self;
     NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:LTBeaconUUID];
-    NSString *identifier = @"net.evancoleman.lights";
+    NSString *identifierPrefix = @"net.evancoleman.lights";
     [self.session queryBeaconsWithBlock:^(NSArray *beacons) {
         NSMutableArray *b = [NSMutableArray array];
         for (LKBeacon *beacon in beacons) {
             NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:beacon forKey:LTBeaconKey];
             
+            NSString *identifier = [identifierPrefix stringByAppendingFormat:@".%lu", (long)beacon.beaconId];
             CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid major:beacon.major minor:beacon.minor identifier:identifier];
             dict[LTBeaconRegionKey] = beaconRegion;
             
