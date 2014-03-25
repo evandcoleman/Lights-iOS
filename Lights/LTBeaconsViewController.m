@@ -47,20 +47,11 @@ static NSString * const LTBeaconRegionKey = @"LTBeaconRegionKey";
     
     self.locationManager.delegate = self;
     NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:LTBeaconUUID];
-    NSString *identifierPrefix = @"net.evancoleman.lights";
+    NSString *identifier = @"net.evancoleman.lights";
     [self.session queryBeaconsWithBlock:^(NSArray *beacons) {
-        NSMutableArray *b = [NSMutableArray array];
-        for (LKBeacon *beacon in beacons) {
-            NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:beacon forKey:LTBeaconKey];
-            
-            NSString *identifier = [identifierPrefix stringByAppendingFormat:@".%lu", (long)beacon.beaconId];
-            CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid major:beacon.major minor:beacon.minor identifier:identifier];
-            dict[LTBeaconRegionKey] = beaconRegion;
-            
-            [self.locationManager startRangingBeaconsInRegion:beaconRegion];
-            [b addObject:dict];
-        }
-        self.beacons = b;
+        CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid identifier:identifier];
+        [self.locationManager startRangingBeaconsInRegion:beaconRegion];
+        self.beacons = beacons;
     }];
 }
 
@@ -87,9 +78,8 @@ static NSString * const LTBeaconRegionKey = @"LTBeaconRegionKey";
     
     NSNumber *sectionKey = [[self.beaconsDict allKeys] objectAtIndex:indexPath.section];
     CLBeacon *beacon = [[self.beaconsDict objectForKey:sectionKey] objectAtIndex:indexPath.row];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"LTBeaconRegionKey.major == %@ AND LTBeaconRegionKey.minor == %@", beacon.major, beacon.minor];
-    NSDictionary *dict = [[self.beacons filteredArrayUsingPredicate:predicate] firstObject];
-    LKBeacon *b = dict[LTBeaconKey];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"major == %@ AND minor == %@", beacon.major, beacon.minor];
+    LKBeacon *b = [[self.beacons filteredArrayUsingPredicate:predicate] firstObject];
     
     cell.textLabel.text = b.name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"Major: %@, Minor: %@, Acc: %.2fm", beacon.major, beacon.minor, beacon.accuracy];
@@ -149,6 +139,10 @@ static NSString * const LTBeaconRegionKey = @"LTBeaconRegionKey";
         [self.beaconsDict setObject:farBeacons forKey:[NSNumber numberWithInt:CLProximityFar]];
     
     [self.tableView reloadData];
+}
+
+- (void)locationManager:(CLLocationManager *)manager rangingBeaconsDidFailForRegion:(CLBeaconRegion *)region withError:(NSError *)error {
+    NSLog(@"%@", [error localizedDescription]);
 }
 
 #pragma mark - Helpers
