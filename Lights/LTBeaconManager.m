@@ -116,8 +116,8 @@ static NSString * const LTBeaconLastNotificationKey = @"LTBeaconLastNotification
 
 - (BOOL)shouldShowRegionEnteredNotificationForBeacon:(LKBeacon *)beacon {
     EDSunriseSet *set = [EDSunriseSet sunrisesetWithTimezone:[NSTimeZone localTimeZone] latitude:beacon.latitude longitude:beacon.longitude];
-    [set calculateSunriseSunset:[NSDate date]];
-    NSDate *date = set.sunset;
+    [set calculateTwilight:[NSDate date]];
+    NSDate *date = set.civilTwilightEnd;
 
     return ([date timeIntervalSinceNow] < 0.0);
 }
