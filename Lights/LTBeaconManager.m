@@ -9,6 +9,7 @@
 #import "LTBeaconManager.h"
 #import "LTAppDelegate.h"
 #import <CoreLocation/CoreLocation.h>
+#import <EDSunriseSet/EDSunriseSet.h>
 
 static NSString * const LTBeaconUUID = @"E2D56DB8-DFFB-38D2-B06A-D0F5A71096E0";
 static NSString * const LTBeaconKey = @"LTBeaconKey";
@@ -113,6 +114,14 @@ static NSString * const LTBeaconLastNotificationKey = @"LTBeaconLastNotification
     self.locationManager.delegate = nil;
 }
 
+- (BOOL)shouldShowRegionEnteredNotificationForBeacon:(LKBeacon *)beacon {
+    EDSunriseSet *set = [EDSunriseSet sunrisesetWithTimezone:[NSTimeZone localTimeZone] latitude:beacon.latitude longitude:beacon.longitude];
+    [set calculateSunriseSunset:[NSDate date]];
+    NSDate *date = set.sunset;
+
+    return ([date timeIntervalSinceNow] < 0.0);
+}
+
 #pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
@@ -123,7 +132,7 @@ static NSString * const LTBeaconLastNotificationKey = @"LTBeaconLastNotification
     NSLog(@"Entering %@", beacon.name);
     
     NSDate *lastSeen = dict[LTBeaconLastExitedKey];
-    if ([lastSeen timeIntervalSinceNow] < -300 || !lastSeen) {
+    if (([lastSeen timeIntervalSinceNow] < -300 || !lastSeen) && [self shouldShowRegionEnteredNotificationForBeacon:beacon]) {
         if (dict[LTBeaconLastNotificationKey]) {
             [[UIApplication sharedApplication] cancelLocalNotification:dict[LTBeaconLastNotificationKey]];
             [dict removeObjectForKey:LTBeaconLastNotificationKey];
@@ -135,7 +144,7 @@ static NSString * const LTBeaconLastNotificationKey = @"LTBeaconLastNotification
         [[UIApplication sharedApplication] scheduleLocalNotification:notification];
         dict[LTBeaconLastNotificationKey] = notification;
     } else {
-        NSLog(@"Region just exited, ignoring.");
+        NSLog(@"Region just exited or it's still light out, ignoring.");
     }
     
     dict[LTBeaconLastEnteredKey] = [NSDate date];
