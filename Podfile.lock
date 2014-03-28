@@ -39,6 +39,7 @@ PODS:
   - LightsKit (1.0.5):
     - AFNetworking
     - SocketRocket
+  - NSDate-Extensions (0.0.1)
   - SocketRocket (0.3.1-beta2)
   - SSKeychain (1.2.1)
 
@@ -48,6 +49,7 @@ DEPENDENCIES:
   - HHPanningTableViewCell (from `https://github.com/gloubibou/HHPanningTableViewCell.git`)
   - HockeySDK (~> 3.5)
   - LightsKit (from `https://github.com/edc1591/LightsKit.git`)
+  - NSDate-Extensions
   - SSKeychain
 
 EXTERNAL SOURCES:
@@ -63,6 +65,7 @@ SPEC CHECKSUMS:
   HHPanningTableViewCell: 3b320762f2c32330c45c8d325fe010bbe42bf8e6
   HockeySDK: aa28abb106de7804d31acf515f2c9aa4e6481fd0
   LightsKit: 46c8403ca4a2bcc3d5ee780d9498324a09ff5ed0
+  NSDate-Extensions: b78c2b3f363acdcd7b5d2547a6bef6656cd8ff70
   SocketRocket: 7ac946bcce46287a791dfff3c1f8daa692821dae
   SSKeychain: d18926838c2e7cd342e2a49e9f869858e49f035a
 

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class LKBeacon;
+
 @interface LTBeaconManager : NSObject
 
 + (instancetype)sharedManager;
@@ -15,5 +17,6 @@
 - (void)stopTracking;
 
 - (void)triggerActionWithNotification:(UILocalNotification *)note;
+- (void)nearestBeacon:(void (^)(LKBeacon *))completion;
 
 @end

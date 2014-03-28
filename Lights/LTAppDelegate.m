@@ -12,6 +12,7 @@
 #import "LTColorBaseViewController.h"
 #import "LTScheduleTableViewController.h"
 #import "LTBeaconManager.h"
+#import "LTSunsetNotificationHelper.h"
 #import <BlocksKit/UIAlertView+BlocksKit.h>
 #import <SSKeychain/SSKeychain.h>
 #import <HockeySDK/HockeySDK.h>
@@ -93,7 +94,18 @@
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
     if ([self beaconsOn] && [[UIApplication sharedApplication] applicationState] != UIApplicationStateActive) {
-        [[LTBeaconManager sharedManager] triggerActionWithNotification:notification];
+        [self handleLocalNotification:notification];
+    }
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    NSString *eventString = userInfo[@"event"];
+    if ([eventString isEqualToString:@"schedule_sunset"] && [self beaconsOn]) {
+        [LTSunsetNotificationHelper scheduleSunsetNotificationWithCompletion:^{
+            completionHandler(UIBackgroundFetchResultNewData);
+        }];
+    } else {
+        completionHandler(UIBackgroundFetchResultNoData);
     }
 }
 
@@ -202,12 +214,21 @@
         
         UILocalNotification *launchNote = [self.launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
         if (launchNote && [self beaconsOn]){
-            [[LTBeaconManager sharedManager] triggerActionWithNotification:launchNote];
+            [self handleLocalNotification:launchNote];
         }
     }];
 }
 
 #pragma mark - Helpers
+
+- (void)handleLocalNotification:(UILocalNotification *)notification {
+    NSString *eventString = notification.userInfo[@"event"];
+    if ([eventString isEqualToString:@"trigger_room"]) {
+        [[LTBeaconManager sharedManager] triggerActionWithNotification:notification];
+    } else if ([eventString isEqualToString:@"fire_sunset"]) {
+        [LTSunsetNotificationHelper sunsetNotificationDidFire];
+    }
+}
 
 - (BOOL)beaconsOn {
     NSNumber *beaconsOn = [[NSUserDefaults standardUserDefaults] objectForKey:@"LTBeacons"];
