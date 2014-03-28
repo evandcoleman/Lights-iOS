@@ -47,6 +47,11 @@
 		20329D90185CF4FE0082D958 /* LTScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20329D8F185CF4FE0082D958 /* LTScheduleCell.m */; };
 		203578F8184A8DBF00DAC1B8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 203578F7184A8DBE00DAC1B8 /* Security.framework */; };
 		20357900184AAEBC00DAC1B8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 203578FF184AAEBC00DAC1B8 /* Images.xcassets */; };
+		204271D118E3C3C8004FDC74 /* LTLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 204271D018E3C3C8004FDC74 /* LTLocationManager.m */; };
+		20542BA718E275D0002EBF4B /* LTSunsetNotificationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 20542BA618E275D0002EBF4B /* LTSunsetNotificationHelper.m */; };
+		2070264F18D1168F004DE165 /* LTBeaconsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2070264E18D1168F004DE165 /* LTBeaconsViewController.m */; };
+		2070265518D141A3004DE165 /* LTBeaconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2070265418D141A3004DE165 /* LTBeaconManager.m */; };
+		2070265A18D1434D004DE165 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2070265918D1434D004DE165 /* CoreLocation.framework */; };
 		20709965185AB1AA004B9898 /* checkerboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 2070994D185AB1AA004B9898 /* checkerboard.png */; };
 		20709966185AB1AA004B9898 /* checkerboard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2070994E185AB1AA004B9898 /* checkerboard@2x.png */; };
 		20709967185AB1AA004B9898 /* colorPickerKnob.png in Resources */ = {isa = PBXBuildFile; fileRef = 2070994F185AB1AA004B9898 /* colorPickerKnob.png */; };
@@ -141,6 +146,16 @@
 		20329D8F185CF4FE0082D958 /* LTScheduleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTScheduleCell.m; sourceTree = "<group>"; };
 		203578F7184A8DBE00DAC1B8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		203578FF184AAEBC00DAC1B8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		204271CF18E3C3C8004FDC74 /* LTLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTLocationManager.h; sourceTree = "<group>"; };
+		204271D018E3C3C8004FDC74 /* LTLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTLocationManager.m; sourceTree = "<group>"; };
+		20542BA518E275D0002EBF4B /* LTSunsetNotificationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTSunsetNotificationHelper.h; sourceTree = "<group>"; };
+		20542BA618E275D0002EBF4B /* LTSunsetNotificationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTSunsetNotificationHelper.m; sourceTree = "<group>"; };
+		2070264D18D1168F004DE165 /* LTBeaconsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTBeaconsViewController.h; sourceTree = "<group>"; };
+		2070264E18D1168F004DE165 /* LTBeaconsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTBeaconsViewController.m; sourceTree = "<group>"; };
+		2070265318D141A3004DE165 /* LTBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTBeaconManager.h; sourceTree = "<group>"; };
+		2070265418D141A3004DE165 /* LTBeaconManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTBeaconManager.m; sourceTree = "<group>"; };
+		2070265718D142FF004DE165 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		2070265918D1434D004DE165 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2070994D185AB1AA004B9898 /* checkerboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkerboard.png; sourceTree = "<group>"; };
 		2070994E185AB1AA004B9898 /* checkerboard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkerboard@2x.png"; sourceTree = "<group>"; };
 		2070994F185AB1AA004B9898 /* colorPickerKnob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colorPickerKnob.png; sourceTree = "<group>"; };
@@ -193,6 +208,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2070265A18D1434D004DE165 /* CoreLocation.framework in Frameworks */,
 				203578F8184A8DBF00DAC1B8 /* Security.framework in Frameworks */,
 				20A49A411846DDA1004A0539 /* libz.dylib in Frameworks */,
 				202435211845926A00DD8EC1 /* CoreGraphics.framework in Frameworks */,
@@ -253,6 +269,8 @@
 		2024351D1845926A00DD8EC1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2070265918D1434D004DE165 /* CoreLocation.framework */,
+				2070265718D142FF004DE165 /* CoreBluetooth.framework */,
 				203578F7184A8DBE00DAC1B8 /* Security.framework */,
 				20A49A401846DDA1004A0539 /* libz.dylib */,
 				2024351E1845926A00DD8EC1 /* Foundation.framework */,
@@ -270,6 +288,7 @@
 				2070994C185AB1AA004B9898 /* KZColorPicker */,
 				2024352D1845926A00DD8EC1 /* LTAppDelegate.h */,
 				2024352E1845926A00DD8EC1 /* LTAppDelegate.m */,
+				20542BA418E275B6002EBF4B /* Helpers */,
 				20B7167A1862AD3A002AA564 /* View Controllers */,
 				20B7167B1862AD4C002AA564 /* Views */,
 				2024355F184595E700DD8EC1 /* Images */,
@@ -331,6 +350,19 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		20542BA418E275B6002EBF4B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2070265318D141A3004DE165 /* LTBeaconManager.h */,
+				2070265418D141A3004DE165 /* LTBeaconManager.m */,
+				20542BA518E275D0002EBF4B /* LTSunsetNotificationHelper.h */,
+				20542BA618E275D0002EBF4B /* LTSunsetNotificationHelper.m */,
+				204271CF18E3C3C8004FDC74 /* LTLocationManager.h */,
+				204271D018E3C3C8004FDC74 /* LTLocationManager.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		2070994C185AB1AA004B9898 /* KZColorPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,6 +409,8 @@
 				20B40969184664BE00F0016A /* LTSettingsViewController.m */,
 				20B716821862AFA3002AA564 /* LTGroupedTableViewController.h */,
 				20B716831862AFA3002AA564 /* LTGroupedTableViewController.m */,
+				2070264D18D1168F004DE165 /* LTBeaconsViewController.h */,
+				2070264E18D1168F004DE165 /* LTBeaconsViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -486,6 +520,11 @@
 				TargetAttributes = {
 					2024351A1845926A00DD8EC1 = {
 						DevelopmentTeam = 52M9C6892K;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					202435411845926A00DD8EC1 = {
 						TestTargetID = 2024351A1845926A00DD8EC1;
@@ -605,6 +644,7 @@
 				20B716801862ADA2002AA564 /* LTEventAddViewController.m in Sources */,
 				2070996C185AB1AA004B9898 /* KZColorPickerAlphaSlider.m in Sources */,
 				2070996F185AB1AA004B9898 /* KZColorPickerSwatchView.m in Sources */,
+				2070264F18D1168F004DE165 /* LTBeaconsViewController.m in Sources */,
 				20329D8D185CF2680082D958 /* LTScheduleTableViewController.m in Sources */,
 				2024352F1845926A00DD8EC1 /* LTAppDelegate.m in Sources */,
 				201DA55D184EC5D00061E8C3 /* LTPanningTableViewCell.m in Sources */,
@@ -613,6 +653,8 @@
 				2070996B185AB1AA004B9898 /* KZColorPicker.m in Sources */,
 				20C533FF1862B25000E2FF7E /* LTScheduleAddViewController.m in Sources */,
 				202435821845A4AD00DD8EC1 /* LTTableDrawerView.m in Sources */,
+				204271D118E3C3C8004FDC74 /* LTLocationManager.m in Sources */,
+				20542BA718E275D0002EBF4B /* LTSunsetNotificationHelper.m in Sources */,
 				20200352186D394A008678EA /* LTX10RoomsViewController.m in Sources */,
 				2070997C185ABC8D004B9898 /* LTColorAnimateViewController.m in Sources */,
 				2024355E1845952D00DD8EC1 /* LTLoadingViewController.m in Sources */,
@@ -622,6 +664,7 @@
 				2024355B1845937A00DD8EC1 /* LTX10DevicesViewController.m in Sources */,
 				2024352B1845926A00DD8EC1 /* main.m in Sources */,
 				2020034F186D3872008678EA /* LTX10BaseViewController.m in Sources */,
+				2070265518D141A3004DE165 /* LTBeaconManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,6 +786,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Lights/Lights-Prefix.pch";
 				INFOPLIST_FILE = "Lights/Lights-Info.plist";
@@ -751,7 +795,7 @@
 					"$(SRCROOT)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E51C7267-6398-4D49-9A99-692CC60E7849";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -766,6 +810,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Lights/Lights-Prefix.pch";
 				INFOPLIST_FILE = "Lights/Lights-Info.plist";
@@ -774,7 +819,7 @@
 					"$(SRCROOT)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E51C7267-6398-4D49-9A99-692CC60E7849";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
