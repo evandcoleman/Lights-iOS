@@ -216,6 +216,10 @@
         if (launchNote && [self beaconsOn]){
             [self handleLocalNotification:launchNote];
         }
+        
+        [LTSunsetNotificationHelper scheduleSunsetNotificationWithCompletion:^{
+            //completionHandler(UIBackgroundFetchResultNewData);
+        }];
     }];
 }
 

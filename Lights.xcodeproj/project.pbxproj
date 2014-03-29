@@ -70,6 +70,7 @@
 		2070997C185ABC8D004B9898 /* LTColorAnimateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2070997B185ABC8D004B9898 /* LTColorAnimateViewController.m */; };
 		20709983185ACC3B004B9898 /* LTColorSwatchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20709982185ACC3B004B9898 /* LTColorSwatchesViewController.m */; };
 		20A49A411846DDA1004A0539 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A49A401846DDA1004A0539 /* libz.dylib */; };
+		20A6711C18E6494B002AF415 /* LTNotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A6711B18E6494B002AF415 /* LTNotificationsViewController.m */; };
 		20B4096A184664BE00F0016A /* LTSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B40969184664BE00F0016A /* LTSettingsViewController.m */; };
 		20B4096D18466A1500F0016A /* LTColorBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B4096C18466A1500F0016A /* LTColorBaseViewController.m */; };
 		20B716801862ADA2002AA564 /* LTEventAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B7167F1862ADA2002AA564 /* LTEventAddViewController.m */; };
@@ -185,6 +186,8 @@
 		20709981185ACC3B004B9898 /* LTColorSwatchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTColorSwatchesViewController.h; sourceTree = "<group>"; };
 		20709982185ACC3B004B9898 /* LTColorSwatchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTColorSwatchesViewController.m; sourceTree = "<group>"; };
 		20A49A401846DDA1004A0539 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		20A6711A18E6494B002AF415 /* LTNotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTNotificationsViewController.h; sourceTree = "<group>"; };
+		20A6711B18E6494B002AF415 /* LTNotificationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTNotificationsViewController.m; sourceTree = "<group>"; };
 		20B40968184664BE00F0016A /* LTSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTSettingsViewController.h; sourceTree = "<group>"; };
 		20B40969184664BE00F0016A /* LTSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTSettingsViewController.m; sourceTree = "<group>"; };
 		20B4096B18466A1500F0016A /* LTColorBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTColorBaseViewController.h; sourceTree = "<group>"; };
@@ -411,6 +414,8 @@
 				20B716831862AFA3002AA564 /* LTGroupedTableViewController.m */,
 				2070264D18D1168F004DE165 /* LTBeaconsViewController.h */,
 				2070264E18D1168F004DE165 /* LTBeaconsViewController.m */,
+				20A6711A18E6494B002AF415 /* LTNotificationsViewController.h */,
+				20A6711B18E6494B002AF415 /* LTNotificationsViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -657,6 +662,7 @@
 				20542BA718E275D0002EBF4B /* LTSunsetNotificationHelper.m in Sources */,
 				20200352186D394A008678EA /* LTX10RoomsViewController.m in Sources */,
 				2070997C185ABC8D004B9898 /* LTColorAnimateViewController.m in Sources */,
+				20A6711C18E6494B002AF415 /* LTNotificationsViewController.m in Sources */,
 				2024355E1845952D00DD8EC1 /* LTLoadingViewController.m in Sources */,
 				20B4096A184664BE00F0016A /* LTSettingsViewController.m in Sources */,
 				2070996A185AB1AA004B9898 /* KZColorCompareView.m in Sources */,
