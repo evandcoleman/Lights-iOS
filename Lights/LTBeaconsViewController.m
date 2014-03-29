@@ -8,7 +8,6 @@
 
 #import "LTBeaconsViewController.h"
 #import "LTAppDelegate.h"
-#import <BlocksKit/UIBarButtonItem+BlocksKit.h>
 #import <CoreLocation/CoreLocation.h>
 
 static NSString * const LTBeaconUUID = @"E2D56DB8-DFFB-38D2-B06A-D0F5A71096E0";
@@ -39,11 +38,6 @@ static NSString * const LTBeaconRegionKey = @"LTBeaconRegionKey";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] bk_initWithBarButtonSystemItem:UIBarButtonSystemItemDone handler:^(id sender) {
-        [self dismissViewControllerAnimated:YES completion:NULL];
-    }];
-    self.navigationItem.rightBarButtonItem = doneButton;
     
     self.locationManager.delegate = self;
     NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:LTBeaconUUID];
