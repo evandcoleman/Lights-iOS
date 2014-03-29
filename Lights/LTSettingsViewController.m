@@ -56,7 +56,9 @@
         [[(LTAppDelegate *)[[UIApplication sharedApplication] delegate] session] suspendSession];
         [(LTAppDelegate *)[[UIApplication sharedApplication] delegate] setSession:nil];
         
-        // [[NSUserDefaults standardUserDefaults] setObject:self.serverField.text forKey:@"LTServerKey"];
+        // ugly h4x
+        RETextItem *serverItem = [(RETableViewSection *)self.manager.sections[0] items][0];
+        [[NSUserDefaults standardUserDefaults] setObject:serverItem.value forKey:@"LTServerKey"];
         
         [(LTAppDelegate *)[[UIApplication sharedApplication] delegate] loginAndOpenSession];
     }]];
