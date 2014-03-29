@@ -15,6 +15,7 @@
 @interface LTGroupedTableViewController : UITableViewController
 
 @property (nonatomic) NSArray *tableHierarchyMap;
+@property (nonatomic, copy) void (^completionBlock)(NSArray *selectedRowIndexes);
 
 - (NSDictionary *)cellDictForIndexPath:(NSIndexPath *)indexPath;
 

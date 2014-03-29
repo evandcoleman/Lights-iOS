@@ -18,36 +18,44 @@ PODS:
   - AFNetworking/UIKit (2.2.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - BlocksKit (2.2.0):
+  - BlocksKit (2.2.2):
     - BlocksKit/All
-  - BlocksKit/All (2.2.0):
+  - BlocksKit/All (2.2.2):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
     - BlocksKit/MessageUI
     - BlocksKit/UIKit
-  - BlocksKit/Core (2.2.0)
-  - BlocksKit/DynamicDelegate (2.2.0):
-    - BlocksKit/MiniFFI
-  - BlocksKit/MessageUI (2.2.0):
+  - BlocksKit/Core (2.2.2)
+  - BlocksKit/DynamicDelegate (2.2.2)
+  - BlocksKit/MessageUI (2.2.2):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
-  - BlocksKit/MiniFFI (2.2.0)
-  - BlocksKit/UIKit (2.2.0):
+  - BlocksKit/UIKit (2.2.2):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
+  - EDSunriseSet (0.1)
   - HHPanningTableViewCell (2.0.1)
   - HockeySDK (3.5.4)
   - LightsKit (1.0.5):
     - AFNetworking
     - SocketRocket
+  - NSDate-Extensions (0.0.1)
+  - REFormattedNumberField (1.1.2)
+  - RETableViewManager (1.5.10):
+    - REFormattedNumberField (~> 1.1.2)
+    - REValidation (~> 0.1.4)
+  - REValidation (0.1.4)
   - SocketRocket (0.3.1-beta2)
   - SSKeychain (1.2.1)
 
 DEPENDENCIES:
   - BlocksKit
+  - EDSunriseSet
   - HHPanningTableViewCell (from `https://github.com/gloubibou/HHPanningTableViewCell.git`)
   - HockeySDK (~> 3.5)
   - LightsKit (from `https://github.com/edc1591/LightsKit.git`)
+  - NSDate-Extensions
+  - RETableViewManager (~> 1.5)
   - SSKeychain
 
 EXTERNAL SOURCES:
@@ -58,10 +66,15 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 0121f4b69be3fa58d1ab317866e036e12ac9651d
-  BlocksKit: 1b106f407a11997fd79e1da31453758e51277613
+  BlocksKit: 125e4e69a62e3b85bacc5175737dae000b00b9fb
+  EDSunriseSet: 357952628ba70ded05387b8e5280fa8ec815c55e
   HHPanningTableViewCell: 3b320762f2c32330c45c8d325fe010bbe42bf8e6
-  HockeySDK: 4f7f7e15c1f594e8ca1e16a09f04e7418289de7a
+  HockeySDK: aa28abb106de7804d31acf515f2c9aa4e6481fd0
   LightsKit: 46c8403ca4a2bcc3d5ee780d9498324a09ff5ed0
+  NSDate-Extensions: b78c2b3f363acdcd7b5d2547a6bef6656cd8ff70
+  REFormattedNumberField: 57016d59e96dbf5b6281fec4d08b401cb0a3c792
+  RETableViewManager: 1f566591ac24776030545c9542a9236dc1c69ddd
+  REValidation: 02160035110a63af1bf6ad1b8791837b3fa13584
   SocketRocket: 7ac946bcce46287a791dfff3c1f8daa692821dae
   SSKeychain: d18926838c2e7cd342e2a49e9f869858e49f035a
 

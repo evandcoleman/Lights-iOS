@@ -11,15 +11,19 @@
 #import "LTSettingsViewController.h"
 #import "LTColorBaseViewController.h"
 #import "LTScheduleTableViewController.h"
+#import "LTBeaconManager.h"
+#import "LTSunsetNotificationHelper.h"
 #import <BlocksKit/UIAlertView+BlocksKit.h>
 #import <SSKeychain/SSKeychain.h>
 #import <HockeySDK/HockeySDK.h>
 
-#define kDefaultServerURL @"http://example.com"
-#define kServiceName @"lights-app"
+#define kDefaultServerURL @""
+#define kServiceName @""
 #define kHockeyAppId @""
 
 @interface LTAppDelegate ()
+
+@property (nonatomic) NSDictionary *launchOptions;
 
 @end
 
@@ -30,6 +34,9 @@
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
     
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    
+    self.launchOptions = launchOptions;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     self.tabBarController = [[UITabBarController alloc] init];
@@ -59,6 +66,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     [self.tabBarController presentViewController:self.loadingViewController animated:NO completion:NULL];
     [self.session resumeSessionWithCompletion:^{
         [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
@@ -82,6 +90,23 @@
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSLog(@"Error: %@", error);
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    if ([self beaconsOn] && [[UIApplication sharedApplication] applicationState] != UIApplicationStateActive) {
+        [self handleLocalNotification:notification];
+    }
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    NSString *eventString = userInfo[@"event"];
+    if ([eventString isEqualToString:@"schedule_sunset"] && [self beaconsOn]) {
+        [LTSunsetNotificationHelper scheduleSunsetNotificationWithCompletion:^{
+            completionHandler(UIBackgroundFetchResultNewData);
+        }];
+    } else {
+        completionHandler(UIBackgroundFetchResultNoData);
+    }
 }
 
 - (void)setupTabBarControllerWithColors:(BOOL)colors {
@@ -176,13 +201,42 @@
 }
 
 - (void)openSessionWithUsername:(NSString *)username andPassword:(NSString *)password {
-    self.session = [[LKSession alloc] initWithServer:[NSURL URLWithString:[self serverURL]]];
+    self.session = [[LKSession alloc] initWithBaseURL:[NSURL URLWithString:[self serverURL]]];
     [self.session openSessionWithUsername:username password:password completion:^(NSDictionary *userDict){
         [self setupTabBarControllerWithColors:(userDict[@"color_zones"] != (id)[NSNull null])];
         [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
         
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+        
+        if ([self beaconsOn]) {
+            [[LTBeaconManager sharedManager] beginTracking];
+        }
+        
+        UILocalNotification *launchNote = [self.launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+        if (launchNote && [self beaconsOn]){
+            [self handleLocalNotification:launchNote];
+        }
+        
+        [LTSunsetNotificationHelper scheduleSunsetNotificationWithCompletion:^{
+            //completionHandler(UIBackgroundFetchResultNewData);
+        }];
     }];
+}
+
+#pragma mark - Helpers
+
+- (void)handleLocalNotification:(UILocalNotification *)notification {
+    NSString *eventString = notification.userInfo[@"event"];
+    if ([eventString isEqualToString:@"trigger_room"]) {
+        [[LTBeaconManager sharedManager] triggerActionWithNotification:notification];
+    } else if ([eventString isEqualToString:@"fire_sunset"]) {
+        [LTSunsetNotificationHelper sunsetNotificationDidFire];
+    }
+}
+
+- (BOOL)beaconsOn {
+    NSNumber *beaconsOn = [[NSUserDefaults standardUserDefaults] objectForKey:@"LTBeacons"];
+    return ([beaconsOn boolValue] || !beaconsOn);
 }
 
 @end
