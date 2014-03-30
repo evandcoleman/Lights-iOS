@@ -93,19 +93,32 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-    if ([self beaconsOn] && [[UIApplication sharedApplication] applicationState] != UIApplicationStateActive) {
+    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+        UIAlertView *alertView = [[UIAlertView alloc] bk_initWithTitle:@"Notification" message:notification.alertBody];
+        [alertView bk_addButtonWithTitle:@"Dismiss" handler:^{
+            [self handleLocalNotification:notification];
+        }];
+    } else {
         [self handleLocalNotification:notification];
     }
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    NSString *eventString = userInfo[@"event"];
-    if ([eventString isEqualToString:@"schedule_sunset"] && [self beaconsOn]) {
-        [LTSunsetNotificationHelper scheduleSunsetNotificationWithCompletion:^{
-            completionHandler(UIBackgroundFetchResultNewData);
+    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+        id message = userInfo[@"alert"];
+        NSString *messageString = nil;
+        if ([message isKindOfClass:[NSString class]]) {
+            messageString = message;
+        } else if ([message isKindOfClass:[NSDictionary class]]) {
+            messageString = message[@"body"];
+        }
+        
+        UIAlertView *alertView = [[UIAlertView alloc] bk_initWithTitle:@"Notification" message:messageString];
+        [alertView bk_addButtonWithTitle:@"Dismiss" handler:^{
+            [self handlePushNotification:userInfo fetchCompletionHandler:completionHandler];
         }];
     } else {
-        completionHandler(UIBackgroundFetchResultNoData);
+        [self handlePushNotification:userInfo fetchCompletionHandler:completionHandler];
     }
 }
 
@@ -223,10 +236,21 @@
 
 - (void)handleLocalNotification:(UILocalNotification *)notification {
     NSString *eventString = notification.userInfo[@"event"];
-    if ([eventString isEqualToString:@"trigger_room"]) {
+    if ([eventString isEqualToString:@"trigger_room"] && [self beaconsOn]) {
         [[LTBeaconManager sharedManager] triggerActionWithNotification:notification];
-    } else if ([eventString isEqualToString:@"fire_sunset"]) {
+    } else if ([eventString isEqualToString:@"fire_sunset"] && [self beaconsOn]) {
         [LTSunsetNotificationHelper sunsetNotificationDidFire];
+    }
+}
+
+- (void)handlePushNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    NSString *eventString = userInfo[@"event"];
+    if ([eventString isEqualToString:@"schedule_sunset"] && [self beaconsOn]) {
+        [LTSunsetNotificationHelper scheduleSunsetNotificationWithCompletion:^{
+            completionHandler(UIBackgroundFetchResultNewData);
+        }];
+    } else {
+        completionHandler(UIBackgroundFetchResultNoData);
     }
 }
 
