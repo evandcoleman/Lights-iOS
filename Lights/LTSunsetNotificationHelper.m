@@ -41,6 +41,7 @@
 }
 
 + (void)sunsetNotificationDidFire {
+    NSLog(@"Sunset Notification Fired");
     [[LTBeaconManager sharedManager] nearestBeacon:^(LKBeacon *beacon) {
         UILocalNotification *notification = [[UILocalNotification alloc] init];
         notification.alertBody = [NSString stringWithFormat:@"It's getting dark out! Slide to turn on the lights in %@ \uE04C", beacon.name];

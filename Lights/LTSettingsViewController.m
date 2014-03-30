@@ -79,6 +79,15 @@
         LTNotificationsViewController *vc = [[LTNotificationsViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }]];
+    
+//    // Testing
+//    [debugSection addItem:[RETableViewItem itemWithTitle:@"Test Sunset Notification" accessoryType:UITableViewCellAccessoryDisclosureIndicator selectionHandler:^(RETableViewItem *item) {
+//        UILocalNotification *notification = [[UILocalNotification alloc] init];
+//        notification.userInfo = @{@"event": @"fire_sunset"};
+//        [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+//        
+//        NSLog(@"Firing sunset notification");
+//    }]];
     [self.manager addSection:debugSection];
 }
 
