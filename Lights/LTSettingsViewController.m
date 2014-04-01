@@ -53,7 +53,7 @@
     
     RETableViewSection *actionsSection = [RETableViewSection section];
     [actionsSection addItem:[RETableViewItem itemWithTitle:@"Reconnect" accessoryType:UITableViewCellAccessoryNone selectionHandler:^(RETableViewItem *item) {
-        [[(LTAppDelegate *)[[UIApplication sharedApplication] delegate] session] suspendSession];
+        [[LKSession activeSession] suspendSession];
         [(LTAppDelegate *)[[UIApplication sharedApplication] delegate] setSession:nil];
         
         // ugly h4x

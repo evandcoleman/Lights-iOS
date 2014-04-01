@@ -7,7 +7,6 @@
 //
 
 #import "LTColorAnimateViewController.h"
-#import "LTAppDelegate.h"
 
 @interface LTColorAnimateViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -59,8 +58,7 @@
     [self.brightnessSlider addTarget:self action:@selector(brightnessChanged:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:self.brightnessSlider];
     
-    LKSession *session = [(LTAppDelegate *)[[UIApplication sharedApplication] delegate] session];
-    [session queryAnimationsWithBlock:^(NSArray *animations) {
+    [[LKSession activeSession] queryAnimationsWithBlock:^(NSArray *animations) {
         self.animations = animations;
         [self.tableView reloadData];
         
@@ -80,8 +78,7 @@
 }
 
 - (void)getCurrentState {
-    LKSession *session = [(LTAppDelegate *)[[UIApplication sharedApplication] delegate] session];
-    [session queryStateWithBlock:^(LKEvent *event) {
+    [[LKSession activeSession] queryStateWithBlock:^(LKEvent *event) {
         if (event.type != LKEventTypeSolid) {
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"animationId == %@", @(event.type)];
             NSArray *matches = [self.animations filteredArrayUsingPredicate:predicate];
@@ -98,9 +95,8 @@
 }
 
 - (void)sendAnimationEvent {
-    LKSession *session = [(LTAppDelegate *)[[UIApplication sharedApplication] delegate] session];
     LKAnimation *animation = self.animations[self.currentAnimation];
-    [session sendEvent:[LKEvent animationEventWithType:animation.animationId speed:(self.speedSlider.maximumValue - self.speedSlider.value) brightness:self.brightnessSlider.value]];
+    [[LKSession activeSession] sendEvent:[LKEvent animationEventWithType:animation.animationId speed:(self.speedSlider.maximumValue - self.speedSlider.value) brightness:self.brightnessSlider.value]];
 }
 
 #pragma mark - Interface actions

@@ -7,7 +7,6 @@
 //
 
 #import "LTX10DevicesViewController.h"
-#import "LTAppDelegate.h"
 #import "LTTableDrawerView.h"
 #import "LTPanningTableViewCell.h"
 
@@ -15,7 +14,6 @@
 
 @property (nonatomic) UITableView *tableView;
 
-@property (nonatomic, readonly) LKSession *session;
 @property (nonatomic) NSArray *devices;
 @property (nonatomic) LTPanningTableViewCell *openCell;
 
@@ -79,7 +77,7 @@
 #pragma mark - Interface actions
 
 - (void)refresh:(id)sender {
-    [self.session queryX10DevicesWithBlock:^(NSArray *devices) {
+    [[LKSession activeSession] queryX10DevicesWithBlock:^(NSArray *devices) {
         self.devices = devices;
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
         [(UIRefreshControl *)sender endRefreshing];
@@ -88,12 +86,12 @@
 
 - (void)allOn:(id)sender {
     LKEventCollection *collection = [LKEventCollection collectionWithDevices:self.devices command:LKX10CommandOn];
-    [self.session sendEventCollection:collection];
+    [[LKSession activeSession] sendEventCollection:collection];
 }
 
 - (void)allOff:(id)sender {
     LKEventCollection *collection = [LKEventCollection collectionWithDevices:self.devices command:LKX10CommandOff];
-    [self.session sendEventCollection:collection];
+    [[LKSession activeSession] sendEventCollection:collection];
 }
 
 #pragma mark - Table view delegate
@@ -135,7 +133,7 @@
         cell.drawerView = drawerView;
         
         drawerView.onTapButton = ^(LTTableDrawerView *sender, LKX10Command command) {
-            [self.session sendEvent:[LKEvent x10EventWithDevice:sender.device command:command]];
+            [[LKSession activeSession] sendEvent:[LKEvent x10EventWithDevice:sender.device command:command]];
         };
     }
     
@@ -145,12 +143,6 @@
     [(LTTableDrawerView *)cell.drawerView setDevice:self.devices[indexPath.row]];
     
     return cell;
-}
-
-#pragma mark - Helpers
-
-- (LKSession *)session {
-    return [(LTAppDelegate *)[[UIApplication sharedApplication] delegate] session];
 }
 
 @end

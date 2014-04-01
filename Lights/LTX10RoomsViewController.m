@@ -7,12 +7,10 @@
 //
 
 #import "LTX10RoomsViewController.h"
-#import "LTAppDelegate.h"
 #import "LTRoomCell.h"
 
 @interface LTX10RoomsViewController ()
 
-@property (nonatomic, readonly) LKSession *session;
 @property (nonatomic) NSArray *rooms;
 
 @end
@@ -46,7 +44,7 @@
 #pragma mark - Interface actions
 
 - (void)refresh:(id)sender {
-    [self.session queryRoomsWithBlock:^(NSArray *rooms) {
+    [[LKSession activeSession] queryRoomsWithBlock:^(NSArray *rooms) {
         self.rooms = rooms;
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
         [(UIRefreshControl *)sender endRefreshing];
@@ -55,12 +53,12 @@
 
 - (void)roomOn:(UIControl *)sender {
     LKRoom *room = self.rooms[sender.tag];
-    [self.session sendEventCollection:[LKEventCollection collectionWithRoom:room command:LKX10CommandOn]];
+    [[LKSession activeSession] sendEventCollection:[LKEventCollection collectionWithRoom:room command:LKX10CommandOn]];
 }
 
 - (void)roomOff:(UIControl *)sender {
     LKRoom *room = self.rooms[sender.tag];
-    [self.session sendEventCollection:[LKEventCollection collectionWithRoom:room command:LKX10CommandOff]];
+    [[LKSession activeSession] sendEventCollection:[LKEventCollection collectionWithRoom:room command:LKX10CommandOff]];
 }
 
 #pragma mark - Table view data source
@@ -99,13 +97,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.session sendEventCollection:[LKEventCollection collectionWithRoom:self.rooms[indexPath.row] command:LKX10CommandOff]];
-}
-
-#pragma mark - Helpers
-
-- (LKSession *)session {
-    return [(LTAppDelegate *)[[UIApplication sharedApplication] delegate] session];
+    [[LKSession activeSession] sendEventCollection:[LKEventCollection collectionWithRoom:self.rooms[indexPath.row] command:LKX10CommandOff]];
 }
 
 @end

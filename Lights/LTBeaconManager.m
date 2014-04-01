@@ -7,7 +7,6 @@
 //
 
 #import "LTBeaconManager.h"
-#import "LTAppDelegate.h"
 #import <CoreLocation/CoreLocation.h>
 #import <EDSunriseSet/EDSunriseSet.h>
 
@@ -22,7 +21,6 @@ static NSString * const LTBeaconStateKey = @"LTBeaconStateKey";
 
 @interface LTBeaconManager () <CLLocationManagerDelegate>
 
-@property (nonatomic, readonly) LKSession *session;
 @property (nonatomic) NSArray *beacons;
 
 @property (nonatomic) CLLocationManager *locationManager;
@@ -58,7 +56,7 @@ static NSString * const LTBeaconStateKey = @"LTBeaconStateKey";
     [self cleanUp];
     
     if ([CLLocationManager isMonitoringAvailableForClass:[CLBeaconRegion class]]) {
-        [self.session queryBeaconsWithBlock:^(NSArray *beacons) {
+        [[LKSession activeSession] queryBeaconsWithBlock:^(NSArray *beacons) {
             NSMutableArray *b = [NSMutableArray array];
             for (LKBeacon *beacon in beacons) {
                 [b addObject:[@{LTBeaconKey: beacon} mutableCopy]];
@@ -243,12 +241,6 @@ static NSString * const LTBeaconStateKey = @"LTBeaconStateKey";
     if ([self.locationManager.rangedRegions count] == 0 && self.nearestBeaconHandler) {
         [self nearestBeaconContinue];
     }
-}
-
-#pragma mark - Helpers
-
-- (LKSession *)session {
-    return [(LTAppDelegate *)[[UIApplication sharedApplication] delegate] session];
 }
 
 @end

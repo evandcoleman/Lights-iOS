@@ -7,11 +7,9 @@
 //
 
 #import "LTX10PresetsViewController.h"
-#import "LTAppDelegate.h"
 
 @interface LTX10PresetsViewController ()
 
-@property (nonatomic, readonly) LKSession *session;
 @property (nonatomic) NSArray *presets;
 
 @end
@@ -47,7 +45,7 @@
 #pragma mark - Interface actions
 
 - (void)refresh:(id)sender {
-    [self.session queryPresetsWithBlock:^(NSArray *presets) {
+    [[LKSession activeSession] queryPresetsWithBlock:^(NSArray *presets) {
         self.presets = presets;
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
         [(UIRefreshControl *)sender endRefreshing];
@@ -81,14 +79,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.session executePreset:self.presets[indexPath.row]];
+    [[LKSession activeSession] executePreset:self.presets[indexPath.row]];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-#pragma mark - Helpers
-
-- (LKSession *)session {
-    return [(LTAppDelegate *)[[UIApplication sharedApplication] delegate] session];
 }
 
 @end

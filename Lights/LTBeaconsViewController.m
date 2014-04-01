@@ -7,7 +7,6 @@
 //
 
 #import "LTBeaconsViewController.h"
-#import "LTAppDelegate.h"
 #import <CoreLocation/CoreLocation.h>
 
 static NSString * const LTBeaconUUID = @"E2D56DB8-DFFB-38D2-B06A-D0F5A71096E0";
@@ -16,7 +15,6 @@ static NSString * const LTBeaconRegionKey = @"LTBeaconRegionKey";
 
 @interface LTBeaconsViewController () <CLLocationManagerDelegate>
 
-@property (nonatomic, readonly) LKSession *session;
 @property (nonatomic) NSArray *beacons;
 @property (nonatomic) NSMutableDictionary *beaconsDict;
 
@@ -42,7 +40,7 @@ static NSString * const LTBeaconRegionKey = @"LTBeaconRegionKey";
     self.locationManager.delegate = self;
     NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:LTBeaconUUID];
     NSString *identifier = @"net.evancoleman.lights";
-    [self.session queryBeaconsWithBlock:^(NSArray *beacons) {
+    [[LKSession activeSession] queryBeaconsWithBlock:^(NSArray *beacons) {
         CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid identifier:identifier];
         [self.locationManager startRangingBeaconsInRegion:beaconRegion];
         self.beacons = beacons;
@@ -137,12 +135,6 @@ static NSString * const LTBeaconRegionKey = @"LTBeaconRegionKey";
 
 - (void)locationManager:(CLLocationManager *)manager rangingBeaconsDidFailForRegion:(CLBeaconRegion *)region withError:(NSError *)error {
     NSLog(@"%@", [error localizedDescription]);
-}
-
-#pragma mark - Helpers
-
-- (LKSession *)session {
-    return [(LTAppDelegate *)[[UIApplication sharedApplication] delegate] session];
 }
 
 @end

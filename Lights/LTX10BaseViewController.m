@@ -7,7 +7,6 @@
 //
 
 #import "LTX10BaseViewController.h"
-#import "LTAppDelegate.h"
 #import "LTX10DevicesViewController.h"
 #import "LTX10RoomsViewController.h"
 #import "LTX10PresetsViewController.h"
@@ -15,8 +14,6 @@
 @interface LTX10BaseViewController ()
 
 @property (nonatomic) UISegmentedControl *segmentedControl;
-
-@property (nonatomic, readonly) LKSession *session;
 
 @property (nonatomic) UIViewController *currentViewController;
 @property (nonatomic) LTX10DevicesViewController *devicesViewController;
@@ -122,12 +119,6 @@
     [toViewController didMoveToParentViewController:self];
     
     self.currentViewController = toViewController;
-}
-
-#pragma mark - Helpers
-
-- (LKSession *)session {
-    return [(LTAppDelegate *)[[UIApplication sharedApplication] delegate] session];
 }
 
 @end

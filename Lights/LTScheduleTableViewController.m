@@ -7,7 +7,6 @@
 //
 
 #import "LTScheduleTableViewController.h"
-#import "LTAppDelegate.h"
 #import "LTScheduleCell.h"
 #import "LTScheduleAddViewController.h"
 #import <BlocksKit/UIBarButtonItem+BlocksKit.h>
@@ -49,8 +48,7 @@
     }];
     self.navigationItem.leftBarButtonItem = addBarButtonItem;
     
-    LKSession *session = [(LTAppDelegate *)[[UIApplication sharedApplication] delegate] session];
-    [session queryAnimationsWithBlock:^(NSArray *animations) {
+    [[LKSession activeSession] queryAnimationsWithBlock:^(NSArray *animations) {
         self.animations = animations;
     }];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -70,8 +68,7 @@
 #pragma mark - Session methods
 
 - (void)fetchScheduledEvents {
-    LKSession *session = [(LTAppDelegate *)[[UIApplication sharedApplication] delegate] session];
-    [session queryScheduleWithBlock:^(NSArray *events) {
+    [[LKSession activeSession] queryScheduleWithBlock:^(NSArray *events) {
         [self.scheduledEvents removeAllObjects];
         [self.scheduledEvents addObjectsFromArray:events];
         [self.tableView reloadData];
@@ -81,11 +78,10 @@
 #pragma mark - Interface actions
 
 - (void)toggleState:(UISwitch *)sender {
-    LKSession *session = [(LTAppDelegate *)[[UIApplication sharedApplication] delegate] session];
     LKScheduledEvent *event = self.scheduledEvents[sender.tag];
     event.state = !event.state;
     
-    [session updateEvent:event withCompletion:^{
+    [[LKSession activeSession] updateEvent:event withCompletion:^{
         
     }];
 }

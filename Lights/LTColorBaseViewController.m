@@ -7,7 +7,6 @@
 //
 
 #import "LTColorBaseViewController.h"
-#import "LTAppDelegate.h"
 #import "LTColorWheelViewController.h"
 #import "LTColorAnimateViewController.h"
 #import "LTColorSwatchesViewController.h"
@@ -15,8 +14,6 @@
 @interface LTColorBaseViewController ()
 
 @property (nonatomic) UISegmentedControl *segmentedControl;
-
-@property (nonatomic, readonly) LKSession *session;
 
 @property (nonatomic) UIViewController *currentViewController;
 @property (nonatomic) LTColorWheelViewController *colorWheelViewController;
@@ -122,12 +119,6 @@
     [toViewController didMoveToParentViewController:self];
     
     self.currentViewController = toViewController;
-}
-
-#pragma mark - Helpers
-
-- (LKSession *)session {
-    return [(LTAppDelegate *)[[UIApplication sharedApplication] delegate] session];
 }
 
 @end
