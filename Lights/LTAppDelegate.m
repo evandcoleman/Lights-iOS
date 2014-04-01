@@ -21,7 +21,7 @@
 #define kServiceName @""
 #define kHockeyAppId @""
 
-@interface LTAppDelegate ()
+@interface LTAppDelegate () <LKSessionDelegate>
 
 @property (nonatomic) NSDictionary *launchOptions;
 
@@ -215,6 +215,7 @@
 
 - (void)openSessionWithUsername:(NSString *)username andPassword:(NSString *)password {
     self.session = [[LKSession alloc] initWithBaseURL:[NSURL URLWithString:[self serverURL]]];
+    self.session.delegate = self;
     [self.session openSessionWithUsername:username password:password completion:^(NSDictionary *userDict){
         [self setupTabBarControllerWithColors:(userDict[@"color_zones"] != (id)[NSNull null])];
         [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
@@ -230,6 +231,22 @@
             [self handleLocalNotification:launchNote];
         }
     }];
+}
+
+#pragma mark - LKSessionDelegate
+
+- (void)session:(LKSession *)session didFailWithError:(NSError *)error retryHandler:(void (^)())retryHandler {
+    NSHTTPURLResponse *response = error.userInfo[@"AFNetworkingOperationFailingURLResponseErrorKey"];
+    if (response.statusCode == 401) {
+        NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"LTUsername"];
+        NSString *password = [SSKeychain passwordForService:kServiceName account:username];
+       // [self.tabBarController presentViewController:self.loadingViewController animated:NO completion:NULL];
+        [self.session openSessionWithUsername:username password:password completion:^(NSDictionary *userDict) {
+          //  [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
+            
+            retryHandler();
+        }];
+    }
 }
 
 #pragma mark - Helpers
