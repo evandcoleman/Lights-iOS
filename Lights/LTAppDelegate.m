@@ -15,11 +15,9 @@
 #import "LTSunsetNotificationHelper.h"
 #import <BlocksKit/UIAlertView+BlocksKit.h>
 #import <SSKeychain/SSKeychain.h>
-#import <HockeySDK/HockeySDK.h>
 
 #define kDefaultServerURL @""
 #define kServiceName @""
-#define kHockeyAppId @""
 
 @interface LTAppDelegate () <LKSessionDelegate>
 
@@ -30,10 +28,6 @@
 @implementation LTAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:kHockeyAppId];
-    [[BITHockeyManager sharedHockeyManager] startManager];
-    [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
-    
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     
     self.launchOptions = launchOptions;
@@ -240,10 +234,8 @@
     if (response.statusCode == 401) {
         NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"LTUsername"];
         NSString *password = [SSKeychain passwordForService:kServiceName account:username];
-       // [self.tabBarController presentViewController:self.loadingViewController animated:NO completion:NULL];
+
         [self.session openSessionWithUsername:username password:password completion:^(NSDictionary *userDict) {
-          //  [self.tabBarController dismissViewControllerAnimated:YES completion:NULL];
-            
             retryHandler();
         }];
     }
