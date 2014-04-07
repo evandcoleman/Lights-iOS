@@ -167,7 +167,7 @@ static NSString * const LTBeaconStateKey = @"LTBeaconStateKey";
     NSLog(@"Entering %@", beacon.name);
     
     NSDate *lastSeen = dict[LTBeaconLastExitedKey];
-    if (([lastSeen timeIntervalSinceNow] < -300 || !lastSeen) && [self shouldShowRegionEnteredNotificationForBeacon:beacon]) {
+    if (([lastSeen timeIntervalSinceNow] < -600 || !lastSeen) && [self shouldShowRegionEnteredNotificationForBeacon:beacon]) {
         if (dict[LTBeaconLastNotificationKey]) {
             [[UIApplication sharedApplication] cancelLocalNotification:dict[LTBeaconLastNotificationKey]];
             [dict removeObjectForKey:LTBeaconLastNotificationKey];
