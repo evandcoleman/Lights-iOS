@@ -17,7 +17,7 @@ static NSString * const LTBeaconLastExitedKey = @"LTBeaconLastExitedKey";
 static NSString * const LTBeaconLastEnteredKey = @"LTBeaconLastEnteredKey";
 static NSString * const LTBeaconLastNotificationKey = @"LTBeaconLastNotificationKey";
 static NSString * const LTBeaconProximityKey = @"LTBeaconProximityKey";
-static NSString * const LTBeaconStateKey = @"LTBeaconStateKey";
+static NSString * const LTBeaconInRangeKey = @"LTBeaconInRangeKey";
 
 @interface LTBeaconManager () <CLLocationManagerDelegate>
 
@@ -59,7 +59,7 @@ static NSString * const LTBeaconStateKey = @"LTBeaconStateKey";
         [[LKSession activeSession] queryBeaconsWithBlock:^(NSArray *beacons) {
             NSMutableArray *b = [NSMutableArray array];
             for (LKBeacon *beacon in beacons) {
-                [b addObject:[@{LTBeaconKey: beacon} mutableCopy]];
+                [b addObject:[@{LTBeaconKey: beacon, LTBeaconInRangeKey: @NO} mutableCopy]];
             }
             self.beacons = b;
             [self setupBeacons];
@@ -89,8 +89,10 @@ static NSString * const LTBeaconStateKey = @"LTBeaconStateKey";
     if ([self.beacons count] > 0) {
         self.findingNearestBeacon = YES;
         for (NSDictionary *dict in self.beacons) {
-            [self.locationManager requestStateForRegion:dict[LTBeaconRegionKey]];
-            NSLog(@"Requesting state for %@", [(LKBeacon *)dict[LTBeaconKey] name]);
+            if ([dict[LTBeaconInRangeKey] boolValue]) {
+                [self.locationManager startRangingBeaconsInRegion:dict[LTBeaconRegionKey]];
+                NSLog(@"Ranging beacon in %@", [(LKBeacon *)dict[LTBeaconKey] name]);
+            }
         }
     } else {
         self.nearestBeaconHandler(nil);
@@ -140,11 +142,11 @@ static NSString * const LTBeaconStateKey = @"LTBeaconStateKey";
 
 - (void)nearestBeaconContinue {
     NSLog(@"Ranged all beacons. Continuing...");
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"LTBeaconProximityKey != %d AND LTBeaconStateKey == %d", CLProximityUnknown, CLRegionStateInside];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"LTBeaconProximityKey != %d AND LTBeaconInRangeKey == YES", CLProximityUnknown];
     NSArray *rangedBeacons = [self.beacons filteredArrayUsingPredicate:predicate];
     NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:LTBeaconProximityKey ascending:YES];
     NSArray *sortedBeacons = [rangedBeacons sortedArrayUsingDescriptors:@[sort]];
-    NSLog(@"Sorted beacons: %@", sortedBeacons);
+
     if ([sortedBeacons count] > 0) {
         NSDictionary *dict = [sortedBeacons firstObject];
         LKBeacon *beacon = dict[LTBeaconKey];
@@ -178,6 +180,8 @@ static NSString * const LTBeaconStateKey = @"LTBeaconStateKey";
         notification.userInfo = @{@"roomId": @(beacon.roomId), @"event": @"trigger_room"};
         [[UIApplication sharedApplication] scheduleLocalNotification:notification];
         dict[LTBeaconLastNotificationKey] = notification;
+        
+        dict[LTBeaconInRangeKey] = @YES;
     } else {
         NSLog(@"Region just exited or it's still light out, ignoring.");
     }
@@ -191,6 +195,7 @@ static NSString * const LTBeaconStateKey = @"LTBeaconStateKey";
     NSMutableDictionary *dict = [[self.beacons filteredArrayUsingPredicate:predicate] firstObject];
     NSLog(@"Exiting %@", [dict[LTBeaconKey] name]);
     dict[LTBeaconLastExitedKey] = [NSDate date];
+    dict[LTBeaconInRangeKey] = @NO;
     
     if (dict[LTBeaconLastNotificationKey]) {
         [[UIApplication sharedApplication] cancelLocalNotification:dict[LTBeaconLastNotificationKey]];
@@ -200,30 +205,6 @@ static NSString * const LTBeaconStateKey = @"LTBeaconStateKey";
 
 - (void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error {
     NSLog(@"Region monitoring failed with error: %@", [error localizedDescription]);
-}
-
-- (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region {
-    if (self.findingNearestBeacon) {
-        CLBeaconRegion *beaconRegion = (CLBeaconRegion *)region;
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"LTBeaconRegionKey.major == %@ AND LTBeaconRegionKey.minor == %@", beaconRegion.major, beaconRegion.minor];
-        NSMutableDictionary *dict = [[self.beacons filteredArrayUsingPredicate:predicate] firstObject];
-        dict[LTBeaconStateKey] = @(state);
-        
-        NSLog(@"Determined state for %@: %d", [(LKBeacon *)dict[LTBeaconKey] name], state);
-        
-        // See if we've gotten a state for each beacon
-        NSPredicate *statePredicate = [NSPredicate predicateWithFormat:@"LTBeaconStateKey != nil"];
-        NSArray *beacons = [self.beacons filteredArrayUsingPredicate:statePredicate];
-        if ([beacons count] == [self.beacons count]) {
-            NSLog(@"All states determined. Continuing...");
-            for (NSDictionary *dict in self.beacons) {
-                if ([dict[LTBeaconStateKey] integerValue] == CLRegionStateInside && ![self.locationManager.rangedRegions containsObject:dict[LTBeaconRegionKey]]) {
-                    [self.locationManager startRangingBeaconsInRegion:dict[LTBeaconRegionKey]];
-                    NSLog(@"Ranging beacon %@", [(LKBeacon *)dict[LTBeaconKey] name]);
-                }
-            }
-        }
-    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region {
