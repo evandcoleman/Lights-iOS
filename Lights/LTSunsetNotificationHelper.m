@@ -26,7 +26,7 @@
             [set calculateSunriseSunset:date];
             
             UILocalNotification *notification = [[UILocalNotification alloc] init];
-            notification.fireDate = set.sunset;
+            notification.fireDate = [set.sunset dateBySubtractingMinutes:15];
             notification.hasAction = NO;
             notification.userInfo = @{@"event": @"fire_sunset"};
             [[UIApplication sharedApplication] scheduleLocalNotification:notification];

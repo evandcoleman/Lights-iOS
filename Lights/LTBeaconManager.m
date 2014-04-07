@@ -9,6 +9,7 @@
 #import "LTBeaconManager.h"
 #import <CoreLocation/CoreLocation.h>
 #import <EDSunriseSet/EDSunriseSet.h>
+#import <NSDate-Extensions/NSDate-Utilities.h>
 
 static NSString * const LTBeaconUUID = @"E2D56DB8-DFFB-38D2-B06A-D0F5A71096E0";
 static NSString * const LTBeaconKey = @"LTBeaconKey";
@@ -135,7 +136,7 @@ static NSString * const LTBeaconInRangeKey = @"LTBeaconInRangeKey";
 - (BOOL)shouldShowRegionEnteredNotificationForBeacon:(LKBeacon *)beacon {
     EDSunriseSet *set = [EDSunriseSet sunrisesetWithTimezone:[NSTimeZone localTimeZone] latitude:beacon.latitude longitude:beacon.longitude];
     [set calculateSunriseSunset:[NSDate date]];
-    NSDate *date = set.sunset;
+    NSDate *date = [set.sunset dateBySubtractingMinutes:15];
 
     return ([date timeIntervalSinceNow] < 0.0);
 }
