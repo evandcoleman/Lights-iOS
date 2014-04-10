@@ -35,7 +35,6 @@ PODS:
     - BlocksKit/DynamicDelegate
   - EDSunriseSet (0.1)
   - HHPanningTableViewCell (2.0.1)
-  - HockeySDK (3.5.4)
   - LightsKit (1.0.5):
     - AFNetworking
     - SocketRocket
@@ -46,13 +45,12 @@ PODS:
     - REValidation (~> 0.1.4)
   - REValidation (0.1.4)
   - SocketRocket (0.3.1-beta2)
-  - SSKeychain (1.2.1)
+  - SSKeychain (1.2.2)
 
 DEPENDENCIES:
   - BlocksKit
   - EDSunriseSet
   - HHPanningTableViewCell (from `https://github.com/gloubibou/HHPanningTableViewCell.git`)
-  - HockeySDK (~> 3.5)
   - LightsKit (from `https://github.com/edc1591/LightsKit.git`)
   - NSDate-Extensions
   - RETableViewManager (~> 1.5)
@@ -69,13 +67,12 @@ SPEC CHECKSUMS:
   BlocksKit: 125e4e69a62e3b85bacc5175737dae000b00b9fb
   EDSunriseSet: 357952628ba70ded05387b8e5280fa8ec815c55e
   HHPanningTableViewCell: 3b320762f2c32330c45c8d325fe010bbe42bf8e6
-  HockeySDK: aa28abb106de7804d31acf515f2c9aa4e6481fd0
   LightsKit: 46c8403ca4a2bcc3d5ee780d9498324a09ff5ed0
-  NSDate-Extensions: b78c2b3f363acdcd7b5d2547a6bef6656cd8ff70
+  NSDate-Extensions: 4a3be5bdfff735573aae834c93eec99f571dcc20
   REFormattedNumberField: 57016d59e96dbf5b6281fec4d08b401cb0a3c792
   RETableViewManager: 1f566591ac24776030545c9542a9236dc1c69ddd
   REValidation: 02160035110a63af1bf6ad1b8791837b3fa13584
   SocketRocket: 7ac946bcce46287a791dfff3c1f8daa692821dae
-  SSKeychain: d18926838c2e7cd342e2a49e9f869858e49f035a
+  SSKeychain: 3d0b76c87e7b062a7ad1631a825fddec84367d44
 
 COCOAPODS: 0.29.0

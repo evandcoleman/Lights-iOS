@@ -179,30 +179,42 @@
 
 - (void)maybeSetPasswordWithUsername:(NSString *)username completion:(void(^)(NSString *password))completion {
     LKUserSession *userSession = [[LKUserSession alloc] initWithServer:[NSURL URLWithString:[self serverURL]]];
-    [userSession usernameHasPassword:username completion:^(BOOL hasPassword) {
-        if (hasPassword) {
-            NSString *password = [SSKeychain passwordForService:kServiceName account:username];
-            if (password && password.length > 0) {
-                completion(password);
+    [userSession usernameHasPassword:username completion:^(BOOL hasPassword, NSError *error) {
+        if (error) {
+            UIAlertView *alertView = [UIAlertView bk_alertViewWithTitle:@"Error" message:[NSString stringWithFormat:@"An error occurred. Does the username %@ exist?", username]];
+            [alertView bk_addButtonWithTitle:@"Dismiss" handler:^{
+                [SSKeychain deletePasswordForService:kServiceName account:[[NSUserDefaults standardUserDefaults] objectForKey:@"LTUsername"]];
+                [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"LTUsername"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                
+                [self loginAndOpenSession];
+            }];
+            [alertView show];
+        } else {
+            if (hasPassword) {
+                NSString *password = [SSKeychain passwordForService:kServiceName account:username];
+                if (password && password.length > 0) {
+                    completion(password);
+                } else {
+                    UIAlertView *alertView = [UIAlertView bk_alertViewWithTitle:@"Login" message:@"Please enter your password"];
+                    alertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
+                    [alertView bk_addButtonWithTitle:@"Login" handler:^{
+                        [SSKeychain setPassword:[alertView textFieldAtIndex:0].text forService:kServiceName account:username];
+                        completion([alertView textFieldAtIndex:0].text);
+                    }];
+                    [alertView show];
+                }
             } else {
-                UIAlertView *alertView = [UIAlertView bk_alertViewWithTitle:@"Login" message:@"Please enter your password"];
+                UIAlertView *alertView = [UIAlertView bk_alertViewWithTitle:@"Login" message:@"Please choose a password."];
                 alertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
-                [alertView bk_addButtonWithTitle:@"Login" handler:^{
+                [alertView bk_addButtonWithTitle:@"Set Password" handler:^{
                     [SSKeychain setPassword:[alertView textFieldAtIndex:0].text forService:kServiceName account:username];
-                    completion([alertView textFieldAtIndex:0].text);
+                    [userSession setPassword:[alertView textFieldAtIndex:0].text forUsername:username completion:^{
+                        [self openSessionWithUsername:username andPassword:[alertView textFieldAtIndex:0].text];
+                    }];
                 }];
                 [alertView show];
             }
-        } else {
-            UIAlertView *alertView = [UIAlertView bk_alertViewWithTitle:@"Login" message:@"Please choose a password."];
-            alertView.alertViewStyle = UIAlertViewStyleSecureTextInput;
-            [alertView bk_addButtonWithTitle:@"Set Password" handler:^{
-                [SSKeychain setPassword:[alertView textFieldAtIndex:0].text forService:kServiceName account:username];
-                [userSession setPassword:[alertView textFieldAtIndex:0].text forUsername:username completion:^{
-                    [self openSessionWithUsername:username andPassword:[alertView textFieldAtIndex:0].text];
-                }];
-            }];
-            [alertView show];
         }
     }];
 }
