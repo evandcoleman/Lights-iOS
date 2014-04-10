@@ -156,7 +156,10 @@
 }
 
 - (void)loginAndOpenSession {
-    [self.tabBarController presentViewController:self.loadingViewController animated:NO completion:NULL];
+    if (self.tabBarController.presentedViewController != self.loadingViewController) {
+        [self.tabBarController presentViewController:self.loadingViewController animated:NO completion:NULL];
+    }
+    
     // Check for username
     NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"LTUsername"];
     
