@@ -89,9 +89,10 @@
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
     if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
         UIAlertView *alertView = [[UIAlertView alloc] bk_initWithTitle:@"Notification" message:notification.alertBody];
-        [alertView bk_addButtonWithTitle:@"Dismiss" handler:^{
+        [alertView bk_addButtonWithTitle:@"Handle" handler:^{
             [self handleLocalNotification:notification];
         }];
+        [alertView addButtonWithTitle:@"Dismiss"];
         [alertView show];
     } else {
         [self handleLocalNotification:notification];
@@ -109,9 +110,10 @@
         }
         
         UIAlertView *alertView = [[UIAlertView alloc] bk_initWithTitle:@"Notification" message:messageString];
-        [alertView bk_addButtonWithTitle:@"Dismiss" handler:^{
+        [alertView bk_addButtonWithTitle:@"Handle" handler:^{
             [self handlePushNotification:userInfo fetchCompletionHandler:completionHandler];
         }];
+        [alertView addButtonWithTitle:@"Dismiss"];
         [alertView show];
     } else {
         [self handlePushNotification:userInfo fetchCompletionHandler:completionHandler];
