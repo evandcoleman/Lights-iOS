@@ -44,11 +44,13 @@
 + (void)sunsetNotificationDidFire {
     NSLog(@"Sunset Notification Fired");
     [[LTBeaconManager sharedManager] nearestBeacon:^(LKBeacon *beacon) {
-        UILocalNotification *notification = [[UILocalNotification alloc] init];
-        notification.alertBody = [NSString stringWithFormat:@"It's getting dark out! Slide to turn on the lights in %@ \u1F31B", beacon.name];
-        notification.userInfo = @{@"roomId": @(beacon.roomId), @"event": @"trigger_room"};
-        notification.soundName = UILocalNotificationDefaultSoundName;
-        [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+        if (beacon) {
+            UILocalNotification *notification = [[UILocalNotification alloc] init];
+            notification.alertBody = [NSString stringWithFormat:@"It's getting dark out! Slide to turn on the lights in %@ \U0001F31B", beacon.name];
+            notification.userInfo = @{@"roomId": @(beacon.roomId), @"event": @"trigger_room"};
+            notification.soundName = UILocalNotificationDefaultSoundName;
+            [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+        }
     }];
 }
 
