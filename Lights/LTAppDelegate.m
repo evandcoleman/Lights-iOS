@@ -92,6 +92,7 @@
         [alertView bk_addButtonWithTitle:@"Dismiss" handler:^{
             [self handleLocalNotification:notification];
         }];
+        [alertView show];
     } else {
         [self handleLocalNotification:notification];
     }
@@ -111,6 +112,7 @@
         [alertView bk_addButtonWithTitle:@"Dismiss" handler:^{
             [self handlePushNotification:userInfo fetchCompletionHandler:completionHandler];
         }];
+        [alertView show];
     } else {
         [self handlePushNotification:userInfo fetchCompletionHandler:completionHandler];
     }
