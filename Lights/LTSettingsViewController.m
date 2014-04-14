@@ -63,7 +63,7 @@
         [(LTAppDelegate *)[[UIApplication sharedApplication] delegate] loginAndOpenSession];
     }]];
     [actionsSection addItem:[RETableViewItem itemWithTitle:@"Logout" accessoryType:UITableViewCellAccessoryNone selectionHandler:^(RETableViewItem *item) {
-        [SSKeychain deletePasswordForService:@"edc-lights" account:[[NSUserDefaults standardUserDefaults] objectForKey:@"LTUsername"]];
+        [SSKeychain deletePasswordForService:kServiceName account:[[NSUserDefaults standardUserDefaults] objectForKey:@"LTUsername"]];
         [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"LTUsername"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         exit(0);

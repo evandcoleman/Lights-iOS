@@ -16,9 +16,6 @@
 #import <BlocksKit/UIAlertView+BlocksKit.h>
 #import <SSKeychain/SSKeychain.h>
 
-#define kDefaultServerURL @""
-#define kServiceName @""
-
 @interface LTAppDelegate () <LKSessionDelegate>
 
 @property (nonatomic) NSDictionary *launchOptions;
