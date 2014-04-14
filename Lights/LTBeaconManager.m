@@ -136,7 +136,7 @@ static NSString * const LTBeaconInRangeKey = @"LTBeaconInRangeKey";
 - (BOOL)shouldShowRegionEnteredNotificationForBeacon:(LKBeacon *)beacon {
     EDSunriseSet *set = [EDSunriseSet sunrisesetWithTimezone:[NSTimeZone localTimeZone] latitude:beacon.latitude longitude:beacon.longitude];
     [set calculateSunriseSunset:[NSDate date]];
-    NSDate *date = [set.sunset dateBySubtractingMinutes:15];
+    NSDate *date = [set.sunset dateByAddingTimeInterval:-60 * 30];
 
     return ([date timeIntervalSinceNow] < 0.0);
 }
@@ -167,6 +167,7 @@ static NSString * const LTBeaconInRangeKey = @"LTBeaconInRangeKey";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"LTBeaconRegionKey.major == %@ AND LTBeaconRegionKey.minor == %@", beaconRegion.major, beaconRegion.minor];
     NSMutableDictionary *dict = [[self.beacons filteredArrayUsingPredicate:predicate] firstObject];
     LKBeacon *beacon = dict[LTBeaconKey];
+    dict[LTBeaconInRangeKey] = @YES;
     NSLog(@"Entering %@", beacon.name);
     
     NSDate *lastSeen = dict[LTBeaconLastExitedKey];
@@ -181,8 +182,6 @@ static NSString * const LTBeaconInRangeKey = @"LTBeaconInRangeKey";
         notification.userInfo = @{@"roomId": @(beacon.roomId), @"event": @"trigger_room"};
         [[UIApplication sharedApplication] scheduleLocalNotification:notification];
         dict[LTBeaconLastNotificationKey] = notification;
-        
-        dict[LTBeaconInRangeKey] = @YES;
     } else {
         NSLog(@"Region just exited or it's still light out, ignoring.");
     }
