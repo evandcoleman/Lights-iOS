@@ -1,36 +1,38 @@
 PODS:
-  - AFNetworking (2.2.1):
+  - AFNetworking (2.4.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.2.1):
+  - AFNetworking/NSURLConnection (2.4.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.2.1):
-    - AFNetworking/NSURLConnection
-  - AFNetworking/Reachability (2.2.1)
-  - AFNetworking/Security (2.2.1)
-  - AFNetworking/Serialization (2.2.1)
-  - AFNetworking/UIKit (2.2.1):
+  - AFNetworking/NSURLSession (2.4.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.4.1)
+  - AFNetworking/Security (2.4.1)
+  - AFNetworking/Serialization (2.4.1)
+  - AFNetworking/UIKit (2.4.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - BlocksKit (2.2.2):
+  - BlocksKit (2.2.5):
     - BlocksKit/All
-  - BlocksKit/All (2.2.2):
+  - BlocksKit/All (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
     - BlocksKit/MessageUI
     - BlocksKit/UIKit
-  - BlocksKit/Core (2.2.2)
-  - BlocksKit/DynamicDelegate (2.2.2)
-  - BlocksKit/MessageUI (2.2.2):
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
-  - BlocksKit/UIKit (2.2.2):
+  - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
   - EDSunriseSet (0.1)
@@ -39,7 +41,7 @@ PODS:
     - AFNetworking
     - SocketRocket
   - NSDate-Extensions (0.0.1)
-  - REFormattedNumberField (1.1.2)
+  - REFormattedNumberField (1.1.4)
   - RETableViewManager (1.5.10):
     - REFormattedNumberField (~> 1.1.2)
     - REValidation (~> 0.1.4)
@@ -48,7 +50,7 @@ PODS:
   - SSKeychain (1.2.2)
 
 DEPENDENCIES:
-  - BlocksKit
+  - BlocksKit (= 2.2.5)
   - EDSunriseSet
   - HHPanningTableViewCell (from `https://github.com/gloubibou/HHPanningTableViewCell.git`)
   - LightsKit (from `https://github.com/edc1591/LightsKit.git`)
@@ -63,16 +65,16 @@ EXTERNAL SOURCES:
     :git: https://github.com/edc1591/LightsKit.git
 
 SPEC CHECKSUMS:
-  AFNetworking: 0121f4b69be3fa58d1ab317866e036e12ac9651d
-  BlocksKit: 125e4e69a62e3b85bacc5175737dae000b00b9fb
-  EDSunriseSet: 357952628ba70ded05387b8e5280fa8ec815c55e
+  AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
+  BlocksKit: 4439e7f30a9f90743462ca63545a15c1f4304cef
+  EDSunriseSet: 86ea62296c0cd5a3a0b512549a0b0f9ddffc7636
   HHPanningTableViewCell: 3b320762f2c32330c45c8d325fe010bbe42bf8e6
   LightsKit: 46c8403ca4a2bcc3d5ee780d9498324a09ff5ed0
-  NSDate-Extensions: 4a3be5bdfff735573aae834c93eec99f571dcc20
-  REFormattedNumberField: 57016d59e96dbf5b6281fec4d08b401cb0a3c792
-  RETableViewManager: 1f566591ac24776030545c9542a9236dc1c69ddd
-  REValidation: 02160035110a63af1bf6ad1b8791837b3fa13584
-  SocketRocket: 7ac946bcce46287a791dfff3c1f8daa692821dae
-  SSKeychain: 3d0b76c87e7b062a7ad1631a825fddec84367d44
+  NSDate-Extensions: dcbef8675a9aed6d9dabfdcd4689300e177277d0
+  REFormattedNumberField: 73fc04771520498a30889a975ec9c1b293059b0e
+  RETableViewManager: 534104717ea10a71b203e80ee0dd3c4c79648be3
+  REValidation: a0033a582415848854e875dfcbe69c107de19f81
+  SocketRocket: 79a68ae186063c65e1fe6f638b1ae2927aa5f304
+  SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.33.1
